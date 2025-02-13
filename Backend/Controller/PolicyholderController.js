@@ -1,101 +1,112 @@
-let policyholders = [];
+const asyncHandler = require('express-async-handler')
+const PolicyHolder = require('../Model/policyHolderModel')
+const Policy = require('../Model/policyModel')
+const Claims = require('../Model/claimModel')
 
-const getPolicyholder = (req, res) => {
-    res.json({ policyholders });
-};
-
-const postPolicyholder = (req, res) => {
-    const { name, email, phone, dob, address, policyNumber } = req.body;
-
-    if (!name || name.length < 3) {
-        return res.status(400).json({ message: "Name is required and must be at least 3 characters long" });
+const applyPolicy = asyncHandler(async (req, res) => {
+    const { dob, address, PAN_NUMBER, policyId } = req.body;
+    if (!dob || !address || !PAN_NUMBER || !policyId) {
+        res.status(400);
+        throw new Error("Enter all fields");
     }
-
-
-    const phoneRegex = /^[0-9]{10}$/;
-    if (!phone || !phoneRegex.test(phone)) {
-        return res.status(400).json({ message: "Phone number must be exactly 10 digits" });
+    const policy = await Policy.findById(policyId);
+    if (!policy) {
+        res.status(400);
+        throw new Error("Policy does not exist");
     }
-
-
-
-
-    const newPolicyholder = {
-        id: policyholders.length,
-        name,
-        email,
-        phone,
-        dob,
-        address,
-        policyNumber
-    };
-
-    policyholders.push(newPolicyholder);
-    res.status(201).json(newPolicyholder);
-};
-
-const putPolicyholder = (req, res) => {
-    const { id } = req.params;
-    const { name, email, phone, dob, address, policyNumber } = req.body;
-    const policyholderIndex = policyholders.findIndex(ph => ph.id === parseInt(id));
-
-    if (policyholderIndex === -1) {
-        return res.status(404).json({ message: "Policyholder not found" });
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
     }
-
-    if (name && name.length < 3) {
-        return res.status(400).json({ message: "Name must be at least 3 characters long" });
+    if (age < 18) {
+        res.status(400);
+        throw new Error("Age should be at least 18.");
     }
-
-    if (email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({ message: "Valid email is required" });
+    if (PAN_NUMBER.length !== 10) {
+        res.status(400);
+        throw new Error("Enter a valid PAN number");
+    }
+    if (req.user.role !== 'policyholder') {
+        res.status(400);
+        throw new Error("Only policyholders can claim the policies");
+    }
+    if (!req.user.name || !req.user.email || !req.user.phone) {
+        res.status(400);
+        throw new Error("User data is incomplete.");
+    }
+    let policyHolder = await PolicyHolder.findOne({ policyHolderId: req.user._id });
+    if (!policyHolder) {
+        policyHolder = await PolicyHolder.create({
+            policyHolderId: req.user._id,
+            name: req.user.name,
+            email: req.user.email,
+            phone: req.user.phone,
+            dob,
+            address,
+            PAN_NUMBER,
+            amount: policy.amount,
+            policies: [policyId],
+            claims: [],
+        });
+    } else {
+        if (!policyHolder.policies.includes(policyId)) {
+            policyHolder.policies.push(policyId);
+            await policyHolder.save();
+        } else {
+            res.status(400);
+            throw new Error("You have already claimed the policy.");
         }
     }
+    res.status(201).json(policyHolder);
+});
 
-    if (phone) {
-        const phoneRegex = /^[0-9]{10}$/;
-        if (!phoneRegex.test(phone)) {
-            return res.status(400).json({ message: "Phone number must be exactly 10 digits" });
-        }
+
+
+const updatePolicy=asyncHandler(async (req,res)=>{
+    if(req.user.role==='policyholder'){
+        res.status(400)
+        throw new Error("You cannot update the data")
     }
-
-    if (dob && isNaN(Date.parse(dob))) {
-        return res.status(400).json({ message: "Valid date of birth is required" });
+    const id = req.params.id 
+    
+    const policyHolder = await PolicyHolder.findById(id)
+    if(!policyHolder){
+        res.status(400)
+        throw new Error("User has not claimed any policy")
+    }else{
+        const newPolicyHolder = await PolicyHolder.findByIdAndUpdate(id,req.body,{new:true})
+        res.status(200).json(newPolicyHolder)
     }
+})
 
-    if (address && address.trim().length === 0) {
-        return res.status(400).json({ message: "Address is required" });
+const getAllPolicyHolders = asyncHandler(async (req, res) => {
+    const policyHolders = await PolicyHolder.find();
+    if (!policyHolders || policyHolders.length === 0) {
+        res.status(404);
+        throw new Error("No policyholders found.");
     }
+    res.status(200).json(policyHolders);
+});
 
-    if (policyNumber && policyNumber.trim().length === 0) {
-        return res.status(400).json({ message: "Policy Number is required" });
+
+const getAllPolicies = asyncHandler(async (req, res) => {
+    const policyHolder = await PolicyHolder.findOne({ policyHolderId: req.user._id });
+    if (!policyHolder) {
+        res.status(404);
+        throw new Error("Policyholder not found.");
     }
-
-    policyholders[policyholderIndex] = {
-        ...policyholders[policyholderIndex],
-        name,
-        email,
-        phone,
-        dob,
-        address,
-        policyNumber
-    };
-
-    res.json(policyholders[policyholderIndex]);
-};
-
-const deletePolicyholder = (req, res) => {
-    const { id } = req.params;
-    const policyholderExists = policyholders.some(ph => ph.id === parseInt(id));
-
-    if (!policyholderExists) {
-        return res.status(404).json({ message: "Policyholder not found" });
+    const policies = await Policy.find({ _id: { $in: policyHolder.policies } });
+    if (!policies) {
+        res.status(404);
+        throw new Error("No policies found for this user.");
     }
+    if(policies.length===0){
+        res.status(200).json("No policies are found")
+    }
+    res.status(200).json(policies);
+});
 
-    policyholders = policyholders.filter(ph => ph.id !== parseInt(id));
-    res.json({ message: "Policyholder deleted successfully" });
-};
-
-module.exports = { getPolicyholder, postPolicyholder, putPolicyholder, deletePolicyholder };
+module.exports = {applyPolicy,updatePolicy,getAllPolicyHolders,getAllPolicies}

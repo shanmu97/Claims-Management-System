@@ -1,12 +1,14 @@
 const express = require('express')
+const {protect} = require('../Middleware/authMiddleware')
+const {applyPolicy,updatePolicy, getAllPolicyHolders,getAllPolicies} = require('../Controller/PolicyholderController');
 
-const {getPolicyholder,postPolicyholder,putPolicyholder,deletePolicyholder} = require('../Controller/PolicyholderController')
 
 const router = express.Router()
 
-router.get('/get',getPolicyholder)
-router.post('/post',postPolicyholder)
-router.put('/put/:id',putPolicyholder)
-router.delete('/delete/:id',deletePolicyholder)
+router.post('/',protect,applyPolicy);
+router.put('/:id',protect,updatePolicy);
+router.get('/',getAllPolicyHolders);
+router.get('/policies',protect,getAllPolicies)
+
 
 module.exports = router

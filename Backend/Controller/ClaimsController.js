@@ -1,79 +1,94 @@
-let claims = [];
+const asyncHandler = require('express-async-handler')
+const Policy = require('../Model/policyHolderModel')
+const PolicyHolder = require('../Model/policyHolderModel')
+const Claims = require('../Model/claimModel')
 
-const getClaim = (req, res) => {
-    res.json({ claims });
-};
-
-const postClaim = (req, res) => {
-    const { claimNumber, policyId, claimantName, amount, status } = req.body;
-
-
-
-    const newClaim = {
-        id: claims.length,
-        claimNumber,
-        policyId,
-        claimantName,
-        amount,
-        status: status.toLowerCase()
-    };
-
-    claims.push(newClaim);
-    res.status(201).json(newClaim);
-};
-
-const putClaim = (req, res) => {
-    const { id } = req.params;
-    const { claimNumber, policyId, claimantName, amount, status } = req.body;
-    const claimIndex = claims.findIndex(claim => claim.id === parseInt(id));
-
-    if (claimIndex === -1) {
-        return res.status(404).json({ message: "Claim not found" });
+const applyClaim = asyncHandler(async (req, res) => {
+    const { status, claimAmount, appliedDate, reasonForClaim, policyId } = req.body;
+    if (!status || !claimAmount || !appliedDate || !reasonForClaim || !policyId) {
+        res.status(400);
+        throw new Error("Enter all fields");
     }
 
-    if (claimNumber && claimNumber.trim().length < 5) {
-        return res.status(400).json({ message: "Claim Number must be at least 5 characters long" });
+    const id = req.user._id;
+    console.log("User ID:", id); // Log the ID to check if it's correct
+
+    const policyHolder = await PolicyHolder.findOne({policyHolderId:id});
+    if (!policyHolder) {
+        res.status(400);
+        throw new Error("You have not policyHolder");
     }
 
-    if (policyId && (isNaN(policyId) || policyId < 0)) {
-        return res.status(400).json({ message: "Valid Policy ID is required" });
+    const activePolicies = policyHolder.policies
+    if (activePolicies.length === 0) {
+        res.status(400);
+        throw new Error("You have no active policies");
     }
 
-    if (claimantName && claimantName.trim().length < 3) {
-        return res.status(400).json({ message: "Claimant Name must be at least 3 characters long" });
+    const policy = policyHolder.policies.find((p) => p._id.toString() === policyId); // Use `policyId` from the request body
+    if (!policy) {
+        res.status(400);
+        throw new Error("Policy does not exist");
     }
 
-    if (amount && (isNaN(amount) || amount <= 0)) {
-        return res.status(400).json({ message: "Amount must be a positive number" });
+    if (claimAmount > policy.amount) {
+        res.status(400);
+        throw new Error("Enter amount correctly");
     }
 
-    const validStatuses = ["pending", "approved", "rejected"];
-    if (status && !validStatuses.includes(status.toLowerCase())) {
-        return res.status(400).json({ message: `Status must be one of the following: ${validStatuses.join(", ")}` });
+    const claim = await Claims.create({
+        policyId: policy._id,
+        policyholderId: policyHolder._id,  // Make sure the policyholderId is correctly passed
+        status,
+        claimAmount,
+        appliedDate,
+        reasonForClaim,
+    });
+
+    // Append the claim to the policyholder's claims array
+    policyHolder.claims.push(claim._id);
+    await policyHolder.save();
+
+    res.status(200).json({ claim });
+});
+
+
+
+
+const updateClaim = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const claim = await Claims.findById(id);
+
+    if (!claim) {
+        res.status(400);
+        throw new Error("Claim not found");
     }
 
-    claims[claimIndex] = {
-        ...claims[claimIndex],
-        claimNumber,
-        policyId,
-        claimantName,
-        amount,
-        status: status ? status.toLowerCase() : claims[claimIndex].status
-    };
+    const updatedClaim = await Claims.findByIdAndUpdate(id, req.body, { new: true });
+    res.status(200).json(updatedClaim);
+});
 
-    res.json(claims[claimIndex]);
-};
-
-const deleteClaim = (req, res) => {
-    const { id } = req.params;
-    const claimExists = claims.some(claim => claim.id === parseInt(id));
-
-    if (!claimExists) {
-        return res.status(404).json({ message: "Claim not found" });
+const getAllClaims = asyncHandler(async (req, res) => {
+    const userId = req.user.id;
+    if (req.user.role === 'policyholder') {
+        const policyHolder = await PolicyHolder.findOne({policyHolderId:userId});
+        const claims = await Claims.find({ policyholderId: policyHolder._id});  // Use `find` instead of `findOne`
+        if (!claims || claims.length === 0) {
+            res.status(404);
+            throw new Error("No claims found for this policyholder.");
+        }
+        return res.status(200).json(claims);
+    } else if (req.user.role === 'admin' || req.user.role === 'agent') {
+        const claims = await Claims.find();
+        if (!claims || claims.length === 0) {
+            res.status(404);
+            throw new Error("No claims found.");
+        }
+        return res.status(200).json(claims);
     }
+    res.status(403);
+    throw new Error("Unauthorized: Only policyholders, admins, or agents can view claims.");
+});
 
-    claims = claims.filter(claim => claim.id !== parseInt(id));
-    res.json({ message: "Claim deleted successfully" });
-};
 
-module.exports = { getClaim, postClaim, putClaim, deleteClaim };
+module.exports = {applyClaim,updateClaim,getAllClaims}

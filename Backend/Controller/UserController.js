@@ -1,80 +1,96 @@
-let users = [];
+const User = require('../Model/userModal')
+const bcrypt = require('bcryptjs')
+const asyncHandler = require('express-async-handler')
+const jwt = require('jsonwebtoken')
 
-const getUser = (req, res) => {
-    res.json({ users });
-};
+const registerUser = asyncHandler(async (req,res) =>{
+    const {name,email,password,phone,role}= req.body
 
-const postUser = (req, res) => {
-    const { name, email, password, role } = req.body;
-
-    if (!name || name.length < 3) {
-        return res.status(400).json({ message: "Name is required and should be at least 3 characters long" });
+    if(!name || !email || !password || !phone || !role ){
+        res.status(400)
+        throw new Error("Please add all fields")
     }
-    
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
-        return res.status(400).json({ message: "Valid email is required" });
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if(!emailRegex.test(email)){
+        res.status(400)
+        throw new Error("Enter correct email")
     }
-
-    if (!password || password.length < 6) {
-        return res.status(400).json({ message: "Password must be at least 6 characters long" });
+    if(password.length<=8 ||password.length>=16){
+        res.status(400)
+        throw new Error("Password length should be between 8 and 16")
     }
-
-    const validRoles = ["admin", "agent", "customer"];
-    if (!role || !validRoles.includes(role)) {
-        return res.status(400).json({ message: "Role must be one of: admin, agent, customer" });
+    if(phone.length!==10){
+        res.status(400)
+        throw new Error("Enter correct phone number")
     }
-
-    const newUser = { id: users.length, name, email, password, role };
-    users = [...users, newUser];
-    res.status(201).json(newUser);
-};
-
-const putUser = (req, res) => {
-    const { id } = req.params;
-    const { name, email, password, role } = req.body;
-    const userIndex = users.findIndex(user => user.id === parseInt(id));
-
-    if (userIndex === -1) {
-        return res.status(404).json({ message: "User not found" });
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#^\\-_])[A-Za-z\d@$!%*?&#^\\-_]{8,16}$/
+    if(!passwordRegex.test(password)){
+        res.status(400)
+        throw new Error("Password should contain atleast one Uppercase,one Lowercase, one Number, one Special Charanter.")
     }
 
-    if (name && name.length < 3) {
-        return res.status(400).json({ message: "Name should be at least 3 characters long" });
+    const userExists = await User.findOne({email})
+    if(userExists){
+        res.status(400)
+        throw new Error("User Exists")
+    }
+    const salt  = await bcrypt.genSalt(10)
+    const hashPass = await bcrypt.hash(password,salt)
+    const user =await User.create({
+        name,email,password:hashPass,phone,role
+    })
+    if(user){
+        res.json({
+            id:user.id,
+            name,
+            email,
+            token:generateToken(user.id)
+        })
+    }else{
+        res.status(401)
+        throw new Error("Register User")
     }
 
-    if (email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({ message: "Valid email is required" });
-        }
+    res.json({message:"Register User."})
+})
+
+const loginUser = asyncHandler(async (req,res) =>{
+    const {email,password} = req.body
+    const user = await User.findOne({email})
+    if(user && await bcrypt.compare(password,user.password)){
+        res.status(200).json({
+            id:user.id,
+            name:user.name,
+            email:user.email,
+            role:user.role,
+            token:generateToken(user.id)
+        })
+    }else{
+        res.status(401)
+        throw new Error("Invalid Credentials")
     }
+})
 
-    if (password && password.length < 6) {
-        return res.status(400).json({ message: "Password must be at least 6 characters long" });
-    }
+const generateToken = (id) =>{
+    return jwt.sign({id},process.env.JWT_SECRET,{
+        expiresIn:'30d'
+    })
+}
+const getUser = asyncHandler(async (req,res)=>{
+    const {_id,name,email,role}= await User.findById(req.user.id)
+    res.json({
+        id:_id,
+        name,
+        email,
+        role
+    })
+})
+const editUser = asyncHandler(async (req,res)=>{
+    const id = req.user.id
+    const updateUser = await User.findByIdAndUpdate(id,req.body,{new:true})
+    res.status(200).json(updateUser)
+})
 
-    if (role) {
-        const validRoles = ["admin", "agent", "customer"];
-        if (!validRoles.includes(role)) {
-            return res.status(400).json({ message: "Role must be one of: admin, agent, customer" });
-        }
-    }
-
-    users[userIndex] = { ...users[userIndex], name, email, password, role };
-    res.json(users[userIndex]);
-};
-
-const deleteUser = (req, res) => {
-    const { id } = req.params;
-    const userExists = users.some(user => user.id === parseInt(id));
-
-    if (!userExists) {
-        return res.status(404).json({ message: "User not found" });
-    }
-
-    users = users.filter(user => user.id !== parseInt(id));
-    res.json({ message: "User deleted successfully" });
-};
-
-module.exports = { getUser, postUser, putUser, deleteUser };
+module.exports={
+    registerUser,loginUser,getUser,editUser
+}
