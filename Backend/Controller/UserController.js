@@ -78,12 +78,13 @@ const generateToken = (id) =>{
     })
 }
 const getUser = asyncHandler(async (req,res)=>{
-    const {_id,name,email,role}= await User.findById(req.user.id)
+    const {_id,name,email,role,phone}= await User.findById(req.user.id)
     res.json({
         id:_id,
         name,
         email,
-        role
+        role,
+        phone
     })
 })
 const editUser = asyncHandler(async (req,res)=>{
