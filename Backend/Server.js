@@ -8,6 +8,12 @@ const port = process.env.PORT || 5000
 
 const app = express()
 
+
+app.use(cors({origin:'*'}));
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+app.use(errorHandler)
+
 mongoose.connect("mongodb+srv://shanmukhareddyvasa:shanmukha12345@shanmukhacluster.nmaie.mongodb.net/Claims-Management-System?retryWrites=true&w=majority&appName=ShanmukhaCLuster",{
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -17,10 +23,6 @@ mongoose.connect("mongodb+srv://shanmukhareddyvasa:shanmukha12345@shanmukhaclust
     console.error(err)
 })
 
-app.use(cors());
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
-app.use(errorHandler)
 
 app.use('/users',require("./Routes/goUsers"))
 app.use('/policies',require("./Routes/goPolicy"))
