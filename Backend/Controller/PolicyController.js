@@ -22,22 +22,21 @@ const addPolicy = asyncHandler(async(req,res)=>{
         res.status(403);
         throw new Error("Unauthorized: Only agents can delete policies.");
     }
-    const{name,type,amount,premium,description,agentId} = req.body
+    const{name,type,amount,premium,description} = req.body
 
     const existingPolicy= await Policy.findOne({
         name:req.body.name,
         type:req.body.type,
         amount:req.body.amount,
         premium:req.body.premium,
-        description:req.body.description,
-        agentId:req.body.agentId
+        description:req.body.description
     })
     if(existingPolicy){
         res.status(400)
         throw new Error("Policy already exists.")
         return
     }
-    if(amount<=0 || premium<=0){
+    if(amount<=0){
         res.status(400)
         throw new Error("Enter correct amount")
     }
@@ -46,7 +45,7 @@ const addPolicy = asyncHandler(async(req,res)=>{
         throw new Error("Enter all fields")
     }
     const policy  = Policy.create({
-        name,type,amount,premium,description,agent:req.user.id
+        name,type,amount,premium,description
     })
     if(policy){
         res.status(201).json()

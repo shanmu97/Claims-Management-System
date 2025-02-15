@@ -22,11 +22,6 @@ const policySchema = mongoose.Schema({
     description:{
         type:String,
         required:[true,"Enter the Description"]
-    },
-    agentName: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: [true, "Agent ID is required"]
     }
 },{
     timestamps:true,
