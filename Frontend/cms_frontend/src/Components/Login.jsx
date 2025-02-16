@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Contexts/AuthContext";
 import "../App.css";
+import user from '../../userlogo123.jpg'
 
 function LoginCard() {
   const { login } = useAuth();
@@ -64,7 +65,7 @@ function LoginCard() {
       >
         <div className="w-1/2">
           <img
-            src="/userlogo123.jpg"
+            src={user}
             alt="Login"
             className="w-full h-full object-cover"
           />

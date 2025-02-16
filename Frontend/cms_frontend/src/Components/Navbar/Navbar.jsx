@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
 import logo from '../../../lumiqai_logo.jpg'
+import user from '../../../userlogo123.jpg';
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
@@ -35,7 +36,7 @@ function Navbar() {
             >
               <img
                 className="w-8 h-8 rounded-full transform transition duration-200 hover:scale-110"
-                src="../userlogo123.jpg"
+                src={user}
                 alt="User"
               />
             </button>
