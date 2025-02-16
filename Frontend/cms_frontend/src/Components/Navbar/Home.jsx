@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import bg_image from '../../../home-background.jpg'
 
 function Home() {
   return (
     <div
       className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600"
-      style={{ backgroundImage: "url('home-background.jpg')" }}
+      style={{ backgroundImage: `url('${bg_image}')` }}
     >
       {/* Main Content */}
       <div

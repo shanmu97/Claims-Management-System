@@ -1,10 +1,11 @@
 import React from 'react'
+import bg_image from '../../../home-background.jpg'
 
 function About() {
   return (
     <div
       className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-4"
-      style={{ backgroundImage: "url('home-background.jpg')" }}
+      style={{ backgroundImage: `url('${bg_image}')` }}
       
     >
       <div className="text-center text-white bg-red mb-8">
