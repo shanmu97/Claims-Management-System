@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
-import logo from '../../../lumiqai_logo.jpg'
+import logo from '../../../lumiqai_logo.jpg';
 import user from '../../../userlogo123.jpg';
 
 function Navbar() {
@@ -31,8 +31,8 @@ function Navbar() {
         <div className="flex items-center md:order-2 space-x-3">
           <div className="relative">
             <button
-              onClick={() => {setDropdownOpen(!dropdownOpen);setActive("user")}}
-              className="focus:outline-none"
+              onClick={() => { setDropdownOpen(!dropdownOpen); setActive("user"); }}
+              className="focus:outline-none relative z-10" // Added relative and z-index to the button
             >
               <img
                 className="w-8 h-8 rounded-full transform transition duration-200 hover:scale-110"
@@ -42,20 +42,20 @@ function Navbar() {
             </button>
 
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg">
+              <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg z-20"> {/* Added z-index to the dropdown */}
                 {isLoggedIn && (
                   <Link
                     to="/profile"
                     onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    className="z-50 block px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
-                    Profile
+                    Dashboard
                   </Link>
                 )}
                 {isLoggedIn ? (
                   <button
                     onClick={handleLogout}
-                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    className="z-50 block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     Logout
                   </button>
@@ -63,7 +63,7 @@ function Navbar() {
                   <Link
                     to="/login"
                     onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    className="z-50 block px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     Login
                   </Link>
