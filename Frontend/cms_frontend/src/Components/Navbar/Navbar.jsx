@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
+import logo from '../../../lumiqai_logo.jpg'
+
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ function Navbar() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center space-x-3 group">
           <div className="flex items-center space-x-3 transform transition duration-200 group-hover:scale-110">
-            <img src="../lumiqai_logo.jpg" className="h-8" alt="LumiqSure Logo" />
+            <img src={logo} className="h-8" alt="LumiqSure Logo" />
             <span className="self-center text-2xl font-semibold text-gray-50 cinzel-decorative-bold">
               LumiqSure
             </span>
