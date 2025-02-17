@@ -13,10 +13,22 @@ import './App.css'
 function App() {
 
   return (
+<<<<<<< HEAD
     <>
     <Router>
       <Navbar/>
       <Routes>
+=======
+
+
+    <>
+
+    <Router>
+      
+      <Navbar/>
+      <Routes>
+         
+>>>>>>> bcc422e740e29d98f615c953d63a0b849b9ce563
         <Route path='/' element={<Home />}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/policies' element={<Policies/>}/>

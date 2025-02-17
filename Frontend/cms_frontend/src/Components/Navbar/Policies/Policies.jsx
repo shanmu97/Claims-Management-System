@@ -3,6 +3,10 @@ import Card from "./Card";
 import axios from "axios";
 import { FaPlus } from "react-icons/fa";
 import { useAuth } from "../../../Contexts/AuthContext";
+<<<<<<< HEAD
+=======
+import bg_image from '../../../../home-background.jpg'
+>>>>>>> bcc422e740e29d98f615c953d63a0b849b9ce563
 
 function Policies() {
   const { role, isLoggedIn, token } = useAuth();
@@ -63,6 +67,7 @@ const handleSubmit = async (e) => {
 
 
   return (
+<<<<<<< HEAD
     <div
       className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-4"
       style={{ backgroundImage: "url('home-background.jpg')" }}
@@ -163,6 +168,111 @@ const handleSubmit = async (e) => {
       </div>
     </div>
     </div>
+=======
+<div
+  className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-4"
+  style={{
+    backgroundImage: `url('${bg_image}')`
+  }}
+>
+  <div className="relative p-4">
+    {isLoggedIn && role === "agent" && (
+      <button
+        onClick={() => setShowForm(!showForm)}
+        className="absolute top-2 right-2 p-3 bg-blue-500 text-white rounded-full shadow-md hover:bg transition"
+      >
+        <FaPlus size={24} />
+      </button>
+    )}
+
+    {showForm && (
+      <form
+        onSubmit={handleSubmit}
+        className="absolute z-40 top-12 right-2 bg-white p-4 shadow-lg rounded-lg w-96"
+      >
+        <h2 className="text-lg font-semibold mb-2">Add Policy</h2>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Name"
+          className="w-full border p-2 mb-2 rounded"
+          required
+        />
+        <input
+          type="number"
+          name="amount"
+          value={formData.amount}
+          onChange={handleChange}
+          placeholder="Amount"
+          className="w-full border p-2 mb-2 rounded"
+          required
+        />
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          placeholder="Description"
+          className="w-full border p-2 mb-2 rounded"
+          required
+        />
+        <select
+          name="type"
+          value={formData.type}
+          onChange={handleChange}
+          className="w-full border p-2 mb-2 rounded"
+          required
+        >
+          {["Life", "Auto", "Health", "Home", "Travel"].map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        <select
+          name="premium"
+          value={formData.premium}
+          onChange={handleChange}
+          className="w-full border p-2 mb-2 rounded"
+          required
+        >
+          {["Monthly", "Quarterly", "Halfyearly", "Annually"].map(
+            (option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            )
+          )}
+        </select>
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+        >
+          Submit
+        </button>
+      </form>
+    )}
+
+    <div className="flex flex-wrap justify-center gap-6">
+      {policies.map((policy) => (
+        <Card
+          id={policy._id}
+          key={policy._id}
+          isVisible={showCards}
+          name={policy.name}
+          description={policy.description}
+          amount={policy.amount}
+          premium={policy.premium}
+          type={policy.type}
+          onEdit={fetchPolicies}
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
+>>>>>>> bcc422e740e29d98f615c953d63a0b849b9ce563
   );
 }
 
