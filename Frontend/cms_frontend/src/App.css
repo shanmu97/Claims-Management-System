@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+.cinzel-decorative-bold {
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+.bg{
+    background-color: #c52929;
+}
+
+.mg{
+  margin-top: -48px;
+}
