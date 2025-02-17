@@ -3,12 +3,14 @@ const dotenv = require('dotenv').config()
 const mongoose = require('mongoose')
 const {errorHandler} = require('./Middleware/errorMiddleware')
 const cors = require('cors')
+const { swaggerUi, specs } = require('./swagger-config'); 
 
 const port = process.env.PORT || 5000
 
 const app = express()
 
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(cors({origin:'*'}));
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
