@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
+import userlogo from '../../userlogo123.jpg'
 
 function RegisterCard() {
   const navigate = useNavigate(); // Add useNavigate hook
@@ -96,7 +97,7 @@ function RegisterCard() {
       >
         <div className="hidden md:block w-1/2">
           <img
-            src="../userlogo123.jpg"
+            src={userlogo}
             alt="Register"
             className="w-full h-full object-cover rounded-l-2xl"
           />
