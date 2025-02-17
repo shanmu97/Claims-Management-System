@@ -3,10 +3,6 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Contexts/AuthContext";
 import "../App.css";
-<<<<<<< HEAD
-=======
-import user from '../../userlogo123.jpg'
->>>>>>> bcc422e740e29d98f615c953d63a0b849b9ce563
 
 function LoginCard() {
   const { login } = useAuth();
@@ -68,11 +64,7 @@ function LoginCard() {
       >
         <div className="w-1/2">
           <img
-<<<<<<< HEAD
             src="/userlogo123.jpg"
-=======
-            src={user}
->>>>>>> bcc422e740e29d98f615c953d63a0b849b9ce563
             alt="Login"
             className="w-full h-full object-cover"
           />
