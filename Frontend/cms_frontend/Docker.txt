@@ -1,0 +1,19 @@
+# Use the official Node.js image
+FROM node:16
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Install Vite and dependencies
+COPY package*.json ./
+RUN npm install
+
+# Build the application for production
+COPY . .
+RUN npm run build
+
+# Expose port for the app
+EXPOSE 3000
+
+# Start the application
+CMD ["npm", "run", "preview"]

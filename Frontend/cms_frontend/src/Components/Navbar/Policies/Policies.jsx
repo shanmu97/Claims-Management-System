@@ -3,6 +3,7 @@ import Card from "./Card";
 import axios from "axios";
 import { FaPlus } from "react-icons/fa";
 import { useAuth } from "../../../Contexts/AuthContext";
+import bgImage from '../../../../home-background.jpg'
 
 function Policies() {
   const { role, isLoggedIn, token } = useAuth();
@@ -65,7 +66,7 @@ const handleSubmit = async (e) => {
   return (
     <div
       className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-4"
-      style={{ backgroundImage: "url('home-background.jpg')" }}
+      style={{ backgroundImage:  `url('${bgImage}')` }}
     >
     <div className="relative p-4">
       {isLoggedIn && role === "agent" && (

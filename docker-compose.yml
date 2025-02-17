@@ -1,0 +1,31 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "9797:5000"
+    networks:
+      - claims_network
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:3000"
+    networks:
+      - claims_network
+
+  db:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+    ports:
+      - "27017:27017"
+    networks:
+      - claims_network
+
+networks:
+  claims_network:
+    driver: bridge
