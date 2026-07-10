@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { FaPlus } from "react-icons/fa";
+import { FiFilePlus } from "react-icons/fi";
 import { useAuth } from "../../../Contexts/AuthContext";
-import bgImage from '../../../../home-background.jpg'
+import Card from "./Card";
 
 function Policies() {
   const { role, isLoggedIn, token } = useAuth();
@@ -24,9 +23,7 @@ function Policies() {
 
   const fetchPolicies = async () => {
     try {
-      const res = await axios.get(
-        "https://claims-management-system-kkd6.onrender.com/policies/"
-      );
+      const res = await axios.get("https://claims-management-system-kkd6.onrender.com/policies/");
       setPolicies(res.data.policies);
     } catch (err) {
       console.error(err);
@@ -41,129 +38,80 @@ function Policies() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const res = await axios.post(
-      "https://claims-management-system-kkd6.onrender.com/policies/",
-      formData,
-      {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("https://claims-management-system-kkd6.onrender.com/policies/", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      }
-    );
-    console.log("Response from API:", res.data); // Debugging
-    setShowForm(false);
-    fetchPolicies();
-  } catch (err) {
-    console.error("Error submitting form:", err.response?.data || err);
-  }
-};
-
+      });
+      setShowForm(false);
+      fetchPolicies();
+    } catch (err) {
+      console.error("Error submitting form:", err.response?.data || err);
+    }
+  };
 
   return (
-    <div
-      className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-4"
-      style={{ backgroundImage:  `url('${bgImage}')` }}
-    >
-    <div className="relative p-4">
-      {isLoggedIn && role === "agent" && (
-        <button
-          onClick={() => setShowForm(!showForm)}
-          className="absolute top-2 right-2 p-3 bg-blue-500 text-white rounded-full shadow-md hover:bg transition"
-        >
-          <FaPlus size={24} />
-        </button>
-      )}
+    <div className="brand-page px-4 py-8 sm:px-6 lg:px-8">
+      <div className="brand-section">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="section-label">Insurance plans</p>
+            <h1 className="text-3xl font-bold text-ink">Choose a plan that fits your needs</h1>
+            <p className="mt-2 text-sm font-semibold text-accent-deep">Transparent coverage, flexible premiums, and guided claims support.</p>
+          </div>
+          {isLoggedIn && role === "agent" && (
+            <button onClick={() => setShowForm((prev) => !prev)} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-card transition hover:bg-accent-deep">
+              <FiFilePlus size={16} />
+              Add Policy
+            </button>
+          )}
+        </div>
 
-      {showForm && (
-        <form
-          onSubmit={handleSubmit}
-          className="absolute z-40 top-12 right-2 bg-white p-4 shadow-lg rounded-lg w-96"
-        >
-          <h2 className="text-lg font-semibold mb-2">Add Policy</h2>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Name"
-            className="w-full border p-2 mb-2 rounded"
-            required
-          />
-          <input
-            type="number"
-            name="amount"
-            value={formData.amount}
-            onChange={handleChange}
-            placeholder="Amount"
-            className="w-full border p-2 mb-2 rounded"
-            required
-          />
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            placeholder="Description"
-            className="w-full border p-2 mb-2 rounded"
-            required
-          />
-          <select
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-            className="w-full border p-2 mb-2 rounded"
-            required
-          >
-            {["Life", "Auto", "Health", "Home", "Travel"].map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <select
-            name="premium"
-            value={formData.premium}
-            onChange={handleChange}
-            className="w-full border p-2 mb-2 rounded"
-            required
-          >
-            {["Monthly", "Quarterly", "Halfyearly", "Annually"].map(
-              (option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              )
-            )}
-          </select>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
-            onSubmit={handleSubmit}
-          >
-            Submit
-          </button>
-        </form>
-      )}
+        {showForm && (
+          <div className="mt-6 flex justify-end">
+            <form onSubmit={handleSubmit} className="brand-card w-full max-w-xl p-6">
+              <h2 className="text-xl font-bold text-ink">Add Policy</h2>
+              <div className="mt-4 grid gap-4">
+                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Policy name" className="brand-input" required />
+                <input type="number" name="amount" value={formData.amount} onChange={handleChange} placeholder="Coverage amount" className="brand-input" required />
+                <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Description" className="brand-input min-h-24" required />
+                <select name="type" value={formData.type} onChange={handleChange} className="brand-input" required>
+                  {['Life', 'Auto', 'Health', 'Home', 'Travel'].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+                <select name="premium" value={formData.premium} onChange={handleChange} className="brand-input" required>
+                  {['Monthly', 'Quarterly', 'Halfyearly', 'Annually'].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex gap-3">
+                  <button type="button" onClick={() => setShowForm(false)} className="rounded-full border border-[color:var(--color-line)] px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[color:var(--color-row-alt)]">
+                    Cancel
+                  </button>
+                  <button type="submit" className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-card transition hover:bg-accent-deep">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        )}
 
-      <div className="flex flex-wrap justify-center gap-6">
-        {policies.map((policy) => (
-          <Card
-            id={policy._id}
-            key={policy._id}
-            isVisible={showCards}
-            name={policy.name}
-            description={policy.description}
-            amount={policy.amount}
-            premium={policy.premium}
-            type={policy.type}
-            onEdit={fetchPolicies}
-          />
-        ))}
+        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {policies.map((policy) => (
+            <Card id={policy._id} key={policy._id} isVisible={showCards} name={policy.name} description={policy.description} amount={policy.amount} premium={policy.premium} type={policy.type} onEdit={fetchPolicies} />
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 }

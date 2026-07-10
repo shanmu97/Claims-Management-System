@@ -1,11 +1,11 @@
-import { FaCheckCircle, FaEdit, FaTrash, FaTimes, FaSave } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { useAuth } from "../../../Contexts/AuthContext";
 import { useState } from "react";
-import bg_policies from "../../../../home-background.jpg";
+import { motion, useReducedMotion } from "framer-motion";
+import { FiCheckCircle, FiEdit3, FiTrash2 } from "react-icons/fi";
+import { useAuth } from "../../../Contexts/AuthContext";
 
 function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) {
   const { role, token } = useAuth();
+  const reduceMotion = useReducedMotion();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
@@ -21,22 +21,18 @@ function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) 
 
   const handleUpdate = async () => {
     try {
-      
-      const response = await fetch(
-        `https://claims-management-system-kkd6.onrender.com/policies/edit/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`https://claims-management-system-kkd6.onrender.com/policies/edit/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
       if (response.ok) {
         setIsEditing(false);
         onEdit();
-      } else {console.log(formData)
+      } else {
         console.error("Failed to update policy");
       }
     } catch (error) {
@@ -46,21 +42,17 @@ function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) 
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch(
-        "https://claims-management-system-kkd6.onrender.com/policyholder/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ ...formData, policyId: id }),
-        }
-      );
+      const response = await fetch("https://claims-management-system-kkd6.onrender.com/policyholder/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ ...formData, policyId: id }),
+      });
       if (response.ok) {
         setIsModalOpen(false);
       } else {
-        console.log(formData)
         console.error("Failed to submit policyholder data");
       }
     } catch (error) {
@@ -72,15 +64,12 @@ function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) 
     if (!window.confirm("Are you sure you want to delete this policy?")) return;
 
     try {
-      const response = await fetch(
-        `https://claims-management-system-kkd6.onrender.com/policies/delete/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`https://claims-management-system-kkd6.onrender.com/policies/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.ok) {
         onEdit();
       } else {
@@ -94,182 +83,104 @@ function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) 
   return (
     <>
       <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  whileHover={{ scale: 1.05 }}
-  transition={{ duration: 0.4 }}
-  className="relative w-72 bg-gray-50 rounded-2xl shadow-xl p-6 space-y-4 border border-gray-200 -mt-16"
->
-  {role === "agent" && (
-    <div className="absolute top-2 right-2 flex gap-2">
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        onClick={() => setIsEditing(!isEditing)}
-        className="text-blue-600 bg-white border border-blue-500 p-2 rounded-lg shadow hover:bg-blue-600 hover:text-white transition"
+        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+        animate={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+        whileHover={reduceMotion ? undefined : { y: -2, scale: 1.01 }}
+        transition={{ duration: 0.4 }}
+        className="brand-card relative overflow-hidden p-6"
       >
-        <FaEdit />
-      </motion.button>
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        onClick={handleDelete}
-        className="text-red-600 bg-white border border-red-500 p-2 rounded-lg shadow hover:bg-red-600 hover:text-white transition"
-      >
-        <FaTrash />
-      </motion.button>
-    </div>
-  )}
+        {role === "agent" && (
+          <div className="absolute right-4 top-4 flex gap-2">
+            <button onClick={() => setIsEditing((prev) => !prev)} className="flex h-9 w-9 items-center justify-center rounded-[10px] border border-[color:var(--color-line)] bg-[color:var(--color-card)] text-accent transition hover:bg-[color:var(--color-tint)]">
+              <FiEdit3 size={16} />
+            </button>
+            <button onClick={handleDelete} className="flex h-9 w-9 items-center justify-center rounded-[10px] border border-[color:var(--color-line)] bg-[color:var(--color-card)] text-[color:var(--color-rejected)] transition hover:bg-[color:var(--color-tint)]">
+              <FiTrash2 size={16} />
+            </button>
+          </div>
+        )}
 
-  {isEditing ? (
-    <div className="space-y-4">
-      <label className="block text-gray-800">Policy Name</label>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleInputChange}
-        className="w-full p-2 border rounded bg-white text-black"
-      />
+        {isEditing ? (
+          <div className="space-y-3">
+            <h2 className="text-xl font-bold text-ink">Edit policy</h2>
+            <input type="text" name="name" value={formData.name} onChange={handleInputChange} className="brand-input" />
+            <textarea name="description" value={formData.description} onChange={handleInputChange} className="brand-input min-h-24" />
+            <input type="number" name="amount" value={formData.amount} onChange={handleInputChange} className="brand-input" />
+            <select name="premium" value={formData.premium} onChange={handleInputChange} className="brand-input">
+              {['Monthly', 'Quarterly', 'Halfyearly', 'Annually'].map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <select name="type" value={formData.type} onChange={handleInputChange} className="brand-input">
+              {['Life', 'Auto', 'Health', 'Home', 'Travel'].map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <div className="flex gap-3 pt-2">
+              <button onClick={() => setIsEditing(false)} className="flex-1 rounded-full border border-[color:var(--color-line)] px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[color:var(--color-row-alt)]">
+                Cancel
+              </button>
+              <button onClick={handleUpdate} className="flex-1 rounded-full bg-approved px-4 py-2 text-sm font-semibold text-card transition hover:bg-[color:var(--color-approved)]">
+                Save
+              </button>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="section-label">Featured plan</p>
+                <h2 className="mt-1 text-xl font-bold text-ink">{name}</h2>
+              </div>
+              <span className="type-chip">{type}</span>
+            </div>
+            <div className="mt-4 rounded-xl bg-[color:var(--color-row-alt)] p-4">
+              <p className="font-mono text-2xl font-bold text-accent-deep">₹ {amount}</p>
+              <p className="mt-2 text-sm text-muted">Premium cadence · {premium}</p>
+            </div>
+            <p className="mt-4 text-sm leading-7 text-muted">{description}</p>
+            <button onClick={() => setIsModalOpen(true)} className="mt-5 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-card transition hover:bg-accent-deep">
+              <FiCheckCircle size={16} />
+              Apply now
+            </button>
+          </>
+        )}
 
-      <label className="block text-gray-800">Description</label>
-      <textarea
-        name="description"
-        value={formData.description}
-        onChange={handleInputChange}
-        className="w-full p-2 border rounded bg-white text-black"
-      ></textarea>
-
-      <label className="block text-gray-800">Amount</label>
-      <input
-        type="number"
-        name="amount"
-        value={formData.amount}
-        onChange={handleInputChange}
-        className="w-full p-2 border rounded bg-white text-black"
-      />
-
-      <label className="block text-gray-800">Installment Type</label>
-      <select
-        name="premium"
-        value={formData.premium}
-        onChange={handleInputChange}
-        className="w-full p-2 border rounded bg-white text-black"
-      >
-        {["Monthly", "Quarterly", "Halfyearly", "Annually"].map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-      <label className="block text-gray-800">Type</label>
-      <select
-        name="type"
-        value={formData.type}
-        onChange={handleInputChange}
-        className="w-full p-2 border rounded bg-white text-black"
-      >
-        {["Life","Auto","Health","Home","Travel"].map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-
-      <div className="flex justify-between gap-2">
-        <button
-          onClick={() => setIsEditing(false)}
-          className="w-1/2 bg-gray-500 text-white p-2 rounded-lg hover:bg-gray-600"
-        >
-          Cancel
-        </button>
-        <button
-          onClick={handleUpdate}
-          className="w-1/2 bg-green-600 text-white p-2 rounded-lg hover:bg-green-700"
-        >
-          Save
-        </button>
-      </div>
-    </div>
-  ) : (
-    <>
-      <motion.img
-        src="https://via.placeholder.com/250x140"
-        alt="Insurance"
-        className="w-full h-36 object-cover rounded-lg"
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.3 }}
-      />
-      <div className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-800">{name}</h2>
-        <p className="text-gray-500 font-semibold text-sm">Amount: Rs. {amount}</p>
-        <p className="text-gray-500 font-semibold text-sm">Installment: {premium}</p>
-        <p className="text-gray-500 font-semibold text-sm">Type: {type}</p>
-        <p className="text-gray-600 text-sm">{description}</p>
-      </div>
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        onClick={() => setIsModalOpen(true)}
-        className="flex items-center justify-center w-full bg-red-700 text-white font-medium py-2 rounded-lg transition"
-      >
-        <FaCheckCircle className="mr-2" />
-        Apply Now
-      </motion.button>
-    </>
-  )}
-  {isModalOpen && (
-    <div className="fixed inset-0 flex items-center justify-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-        <div className="flex justify-between mb-4">
-          <h2 className="text-xl font-bold">Apply for Policy</h2>
-          <button
-            onClick={() => setIsModalOpen(false)}
-            className="text-gray-500 hover:text-gray-700"
-          >
-            <FaTimes />
-          </button>
-        </div>
-        <label className="block">Date of Birth:</label>
-        <input
-          type="date"
-          name="dob"
-          value={formData.dob}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded mb-2"
-          pattern="\d{4}-\d{2}-\d{2}"
-        />
-        <label className="block">Address:</label>
-        <input
-          type="text"
-          name="address"
-          value={formData.address}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded mb-2"
-        />
-        <label className="block">PAN Card:</label>
-        <input
-          type="text"
-          name="PAN_NUMBER"
-          value={formData.PAN_NUMBER}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded mb-2"
-        />
-        <label className="block">Policy ID:</label>
-        <input
-          type="text"
-          value={formData.policyId}
-          disabled
-          className="w-full p-2 border rounded mb-2 bg-gray-100"
-        />
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-green-600 text-white p-2 rounded mt-2"
-        >
-          Submit
-        </button>
-      </div>
-    </div>
-  )}
-</motion.div>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-[color:var(--color-navy)]/70 px-4">
+            <div className="brand-card w-full max-w-md p-6">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="section-label">Application</p>
+                  <h2 className="text-xl font-bold text-ink">Apply for policy</h2>
+                </div>
+                <button onClick={() => setIsModalOpen(false)} className="rounded-full border border-[color:var(--color-line)] px-3 py-1 text-sm font-semibold text-muted">
+                  Close
+                </button>
+              </div>
+              <div className="mt-5 space-y-3">
+                <label className="block text-sm font-semibold text-ink">Date of birth</label>
+                <input type="date" name="dob" value={formData.dob} onChange={handleInputChange} className="brand-input" pattern="\\d{4}-\\d{2}-\\d{2}" />
+                <label className="block text-sm font-semibold text-ink">Address</label>
+                <input type="text" name="address" value={formData.address} onChange={handleInputChange} className="brand-input" />
+                <label className="block text-sm font-semibold text-ink">PAN card</label>
+                <input type="text" name="PAN_NUMBER" value={formData.PAN_NUMBER} onChange={handleInputChange} className="brand-input" />
+                <label className="block text-sm font-semibold text-ink">Policy ID</label>
+                <input type="text" value={formData.policyId} disabled className="brand-input bg-[color:var(--color-row-alt)]" />
+                <button onClick={handleSubmit} className="w-full rounded-full bg-accent px-4 py-2 text-sm font-semibold text-card transition hover:bg-accent-deep">
+                  Submit application
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </motion.div>
     </>
   );
 }
-export default InsuranceBox
+
+export default InsuranceBox;

@@ -1,121 +1,122 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FiList, FiUser } from "react-icons/fi";
 import { useAuth } from "../../Contexts/AuthContext";
-import logo from '../../../lumiqai_logo.jpg';
-import user from '../../../userlogo123.jpg';
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [active, setActive] = useState("home");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.startsWith("/about")) setActive("about");
+    else if (path.startsWith("/policies")) setActive("policies");
+    else if (path.startsWith("/profile")) setActive("profile");
+    else setActive("home");
+  }, [location.pathname]);
 
   const handleLogout = () => {
     logout();
-    setDropdownOpen(false);
+    setMobileOpen(false);
     navigate("/login");
   };
 
+  const links = [
+    { key: "home", label: "Home", to: "/" },
+    { key: "about", label: "About", to: "/about" },
+    { key: "policies", label: "Policies", to: "/policies" },
+    { key: "profile", label: "Profile", to: "/profile" },
+  ];
+
   return (
-    <nav className="bg border-gray-200 dark:bg-gray-900">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link to="/" className="flex items-center space-x-3 group">
-          <div className="flex items-center space-x-3 transform transition duration-200 group-hover:scale-110">
-            <img src={logo} className="h-8" alt="LumiqSure Logo" />
-            <span className="self-center text-2xl font-semibold text-gray-50 cinzel-decorative-bold">
-              LumiqSure
-            </span>
+    <nav className="border-b border-[color:var(--color-line)] bg-navy text-ice">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <Link to="/" className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-accent text-base font-bold text-card shadow-[0_8px_18px_rgba(46,107,224,0.24)]">
+            C
           </div>
+          <span className="text-xl font-bold tracking-wide text-card">
+            Claims<span className="text-accent">MS</span>
+          </span>
         </Link>
 
-        <div className="flex items-center md:order-2 space-x-3">
-          <div className="relative">
-            <button
-              onClick={() => { setDropdownOpen(!dropdownOpen); setActive("user"); }}
-              className="focus:outline-none relative z-10" // Added relative and z-index to the button
-            >
-              <img
-                className="w-8 h-8 rounded-full transform transition duration-200 hover:scale-110"
-                src={user}
-                alt="User"
-              />
-            </button>
+        <div className="flex items-center gap-3">
+          <div className="hidden items-center gap-2 md:flex">
+            {links.map((link) => (
+              <Link
+                key={link.key}
+                to={link.to}
+                onClick={() => setActive(link.key)}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                  active === link.key
+                    ? "bg-accent text-card"
+                    : "text-ice hover:bg-[color:var(--color-tint)] hover:text-card"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
 
-            {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg z-20"> {/* Added z-index to the dropdown */}
-                {isLoggedIn && (
-                  <Link
-                    to="/profile"
-                    onClick={() => setDropdownOpen(false)}
-                    className="z-50 block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                  >
-                    Dashboard
-                  </Link>
-                )}
-                {isLoggedIn ? (
-                  <button
-                    onClick={handleLogout}
-                    className="z-50 block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
-                ) : (
-                  <Link
-                    to="/login"
-                    onClick={() => setDropdownOpen(false)}
-                    className="z-50 block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                  >
-                    Login
-                  </Link>
-                )}
-              </div>
+          <div className="flex items-center gap-2">
+            {isLoggedIn ? (
+              <button
+                onClick={() => navigate("/profile")}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-ice-dim)] bg-[color:var(--color-card)]/10 text-card transition hover:bg-[color:var(--color-card)]/20"
+              >
+                <FiUser size={18} />
+              </button>
+            ) : (
+              <Link to="/login" className="rounded-full border border-[color:var(--color-ice-dim)] px-4 py-2 text-sm font-semibold text-card transition hover:bg-[color:var(--color-card)]/10">
+                Login
+              </Link>
             )}
+
+            {!isLoggedIn && (
+              <Link to="/register" className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-card transition hover:bg-accent-deep">
+                Register
+              </Link>
+            )}
+
+            {isLoggedIn && (
+              <button onClick={handleLogout} className="rounded-full border border-[color:var(--color-ice-dim)] px-4 py-2 text-sm font-semibold text-card transition hover:bg-[color:var(--color-card)]/10">
+                Logout
+              </button>
+            )}
+
+            <button
+              onClick={() => setMobileOpen((prev) => !prev)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-ice-dim)] text-card md:hidden"
+            >
+              <FiList size={18} />
+            </button>
           </div>
         </div>
 
-        <div className="items-center justify-between hidden md:flex md:w-auto">
-          <ul className="flex flex-col font-medium md:space-x-8 md:flex-row">
-            <li>
-              <Link
-                to="/"
-                onClick={() => setActive("home")}
-                className={`block py-2 px-3 rounded-sm md:p-0 transition ${
-                  active === "home"
-                    ? "text-white bg-gray-900 md:bg-transparent md:text-white"
-                    : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white"
-                }`}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                onClick={() => setActive("about")}
-                className={`block py-2 px-3 rounded-sm md:p-0 transition ${
-                  active === "about"
-                    ? "text-white bg-gray-900 md:bg-transparent md:text-white"
-                    : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white"
-                }`}
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/policies"
-                onClick={() => setActive("policies")}
-                className={`block py-2 px-3 rounded-sm md:p-0 transition ${
-                  active === "policies"
-                    ? "text-white bg-gray-900 md:bg-transparent md:text-white"
-                    : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white"
-                }`}
-              >
-                Policies
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {mobileOpen && (
+          <div className="w-full border-t border-[color:var(--color-line)]/40 pt-3 md:hidden">
+            <div className="flex flex-col gap-2">
+              {links.map((link) => (
+                <Link
+                  key={link.key}
+                  to={link.to}
+                  onClick={() => {
+                    setActive(link.key);
+                    setMobileOpen(false);
+                  }}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                    active === link.key ? "bg-accent text-card" : "text-ice"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

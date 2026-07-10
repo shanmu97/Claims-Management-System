@@ -1,50 +1,51 @@
-import React from 'react'
-import bgPic from '../../../home-background.jpg'
+import { motion, useReducedMotion } from "framer-motion";
+import { FiShield } from "react-icons/fi";
 
 function About() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <div
-      className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-4"
-      style={{ backgroundImage: `url('${bgPic}'`}}
-      
-    >
-      <div className="text-center text-white bg-red mb-8">
-        <h1 className="text-5xl font-bold mb-4">About <span className='cinzel-decorative-bold'>LumiqSure</span></h1>
-        <p className="text-xl max-w-3xl mx-auto">
-          LumiqSure is committed to providing reliable, transparent, and tailored insurance solutions to help you secure your future with peace of mind. Whether you're looking to protect your home, car, or business, our innovative policies are designed to meet your specific needs.
-        </p>
-      </div>
+    <div className="brand-page px-4 py-10 sm:px-6 lg:px-8">
+      <div className="brand-section">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          animate={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          className="brand-card p-8 sm:p-10"
+        >
+          <div className="flex items-center gap-3">
+            <div className="icon-chip">
+              <FiShield size={18} />
+            </div>
+            <div>
+              <p className="section-label">About LumiqSure</p>
+              <h1 className="text-3xl font-bold text-ink">Trusted protection, clearly managed</h1>
+            </div>
+          </div>
 
-      <div className="grid md:grid-cols-2 gap-8 text-white w-full justify-center ">
-  <div className="bg-white text-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full mx-auto">
-    <h2 className="text-3xl font-semibold mb-4">Our Mission</h2>
-    <p className="text-lg">
-      At LumiqSure, our mission is to make insurance simple, accessible, and customer-centric. We aim to provide our clients with exceptional service, prompt claims processing, and the peace of mind that comes with knowing they’re covered.
-    </p>
-  </div>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">
+            LumiqSure makes insurance simple, transparent, and easy to manage. From policy selection to claim tracking, every step is designed to keep customers informed and supported.
+          </p>
 
-  <div className="bg-white text-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full mx-auto">
-    <h2 className="text-3xl font-semibold mb-4">Why Choose Us?</h2>
-    <ul className="list-disc pl-6 space-y-2">
-      <li>Transparent and flexible policies</li>
-      <li>Fast and efficient claims processing</li>
-      <li>Personalized customer service</li>
-      <li>Competitive premiums for all types of coverage</li>
-      <li>Innovative solutions for modern needs</li>
-    </ul>
-  </div>
-</div>
-
-
-
-      <div className="mt-12 text-center text-white">
-        <h2 className="text-4xl font-semibold mb-6">Our Values</h2>
-        <p className="text-xl max-w-3xl mx-auto">
-          At LumiqSure, we believe in integrity, transparency, and putting our customers first. We are driven by a passion to protect what matters most to you, offering comprehensive coverage and support every step of the way.
-        </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="rounded-xl border border-[color:var(--color-line)] bg-[color:var(--color-row-alt)] p-6">
+              <h2 className="text-xl font-bold text-ink">Our mission</h2>
+              <p className="mt-3 text-sm leading-7 text-muted">
+                We focus on clarity, speed, and dependable service so that every policyholder feels confident when making decisions and filing claims.
+              </p>
+            </div>
+            <div className="rounded-xl border border-[color:var(--color-line)] bg-[color:var(--color-row-alt)] p-6">
+              <h2 className="text-xl font-bold text-ink">Why choose us</h2>
+              <ul className="mt-3 space-y-2 text-sm leading-7 text-muted">
+                <li>• Transparent coverage choices</li>
+                <li>• Fast claim updates and support</li>
+                <li>• Personalized guidance for each customer</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

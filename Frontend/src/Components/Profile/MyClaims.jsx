@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { usePolicy } from "../../Contexts/PoliciesContext";
-import { FaPlus, FaEdit } from "react-icons/fa";
+import { FiEdit3, FiFilePlus } from "react-icons/fi";
 import { useAuth } from "../../Contexts/AuthContext";
+
+function StatusBadge({ status }) {
+  const map = {
+    Applied: "bg-applied",
+    Pending: "bg-pending",
+    Approved: "bg-approved",
+    Rejected: "bg-rejected",
+  };
+
+  return <span className={`status-badge ${map[status] || "bg-accent"}`}>{status}</span>;
+}
 
 function MyClaims() {
   const { policies } = usePolicy();
@@ -29,14 +40,11 @@ function MyClaims() {
   useEffect(() => {
     const fetchClaims = async () => {
       try {
-        const response = await fetch(
-          "https://claims-management-system-kkd6.onrender.com/claims/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await fetch("https://claims-management-system-kkd6.onrender.com/claims/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch claims");
@@ -61,10 +69,7 @@ function MyClaims() {
     setError(null);
 
     try {
-      const url = isEditing
-        ? `https://claims-management-system-kkd6.onrender.com/claims/${editingClaimId}`
-        : "https://claims-management-system-kkd6.onrender.com/claims/";
-
+      const url = isEditing ? `https://claims-management-system-kkd6.onrender.com/claims/${editingClaimId}` : "https://claims-management-system-kkd6.onrender.com/claims/";
       const method = isEditing ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -83,11 +88,7 @@ function MyClaims() {
       const updatedClaim = await response.json();
 
       if (isEditing) {
-        setClaims((prevClaims) =>
-          prevClaims.map((claim) =>
-            claim._id === editingClaimId ? updatedClaim : claim
-          )
-        );
+        setClaims((prevClaims) => prevClaims.map((claim) => (claim._id === editingClaimId ? updatedClaim : claim)));
       } else {
         setClaims([...claims, updatedClaim]);
       }
@@ -125,27 +126,24 @@ function MyClaims() {
   };
 
   return (
-    <div className="px-4 mt-4">
-      <h1 className="font-bold text-3xl text-gray-800 text-center">
-        My Claims
-        <button
-          style={{ backgroundColor: "#c52929" }}
-          className="text-white rounded-full mx-1 p-2"
-          onClick={() => {
-            resetForm();
-            setShowForm(!showForm);
-          }}
-        >
-          <FaPlus size={12} />
+    <section className="brand-section">
+      <div className="mb-4 flex items-center justify-between">
+        <div>
+          <p className="section-label">My claims</p>
+          <h2 className="text-2xl font-bold text-ink">Claim history and updates</h2>
+        </div>
+        <button onClick={() => { resetForm(); setShowForm((prev) => !prev); }} className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-card transition hover:bg-accent-deep">
+          <FiFilePlus size={16} />
+          File a claim
         </button>
-      </h1>
+      </div>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="mt-4 p-4 border rounded-lg shadow-md max-w-md mx-auto">
-          <div className="grid grid-cols-1 gap-4">
-            <label>
-              Status:
-              <select name="status" value={formData.status} onChange={handleChange} className="w-full p-2 border rounded">
+        <div className="brand-card mb-6 p-6">
+          <form onSubmit={handleSubmit} className="grid gap-4 md:grid-cols-2">
+            <label className="text-sm font-semibold text-ink">
+              Status
+              <select name="status" value={formData.status} onChange={handleChange} className="brand-input mt-2">
                 <option value="Applied">Applied</option>
                 <option value="Pending">Pending</option>
                 <option value="Approved">Approved</option>
@@ -153,33 +151,19 @@ function MyClaims() {
               </select>
             </label>
 
-            <label>
-              Claim Amount:
-              <input
-                type="number"
-                name="claimAmount"
-                value={formData.claimAmount}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-              />
+            <label className="text-sm font-semibold text-ink">
+              Claim amount
+              <input type="number" name="claimAmount" value={formData.claimAmount} onChange={handleChange} className="brand-input mt-2" required />
             </label>
 
-            <label>
-              Applied Date:
-              <input
-                type="date"
-                name="appliedDate"
-                value={formData.appliedDate}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-              />
+            <label className="text-sm font-semibold text-ink">
+              Applied date
+              <input type="date" name="appliedDate" value={formData.appliedDate} onChange={handleChange} className="brand-input mt-2" required />
             </label>
 
-            <label>
-              Reason for Claim:
-              <select name="reasonForClaim" value={formData.reasonForClaim} onChange={handleChange} className="w-full p-2 border rounded">
+            <label className="text-sm font-semibold text-ink">
+              Reason
+              <select name="reasonForClaim" value={formData.reasonForClaim} onChange={handleChange} className="brand-input mt-2">
                 <option value="Medical">Medical</option>
                 <option value="Accident">Accident</option>
                 <option value="Theft">Theft</option>
@@ -188,9 +172,9 @@ function MyClaims() {
               </select>
             </label>
 
-            <label>
-              Policy:
-              <select name="policyId" value={formData.policyId} onChange={handleChange} className="w-full p-2 border rounded">
+            <label className="text-sm font-semibold text-ink md:col-span-2">
+              Policy
+              <select name="policyId" value={formData.policyId} onChange={handleChange} className="brand-input mt-2">
                 {policies.map((policy) => (
                   <option key={policy._id} value={policy._id}>
                     {policy.name}
@@ -199,50 +183,45 @@ function MyClaims() {
               </select>
             </label>
 
-            <button type="submit" className="bg-green-600 text-white p-2 rounded-lg">
-              {isEditing ? "Update Claim" : "Submit Claim"}
-            </button>
-          </div>
-        </form>
+            <div className="md:col-span-2 flex justify-end gap-3">
+              <button type="button" onClick={() => setShowForm(false)} className="rounded-full border border-[color:var(--color-line)] px-4 py-2 text-sm font-semibold text-ink">
+                Cancel
+              </button>
+              <button type="submit" className="rounded-full bg-approved px-4 py-2 text-sm font-semibold text-card transition hover:bg-[color:var(--color-approved)]">
+                {isEditing ? "Update claim" : "Submit claim"}
+              </button>
+            </div>
+          </form>
+        </div>
       )}
 
-      {error && <p className="text-red-600 mt-4">{error}</p>}
+      {error && <div className="mb-4 error-strip">{error}</div>}
 
-      {claims.length > 0 && (
-        <table className="mt-6 w-full border-collapse border">
-          <thead>
-            <tr className="bg-gray-200">
-            <th className="border p-2">S.No</th>
-               <th className="border p-2">Policy Name</th> 
-              <th className="border p-2">Status</th>
-              <th className="border p-2">Claim Amount</th>
-              <th className="border p-2">Applied Date</th>
-              <th className="border p-2">Reason</th>
-              
-              <th className="border p-2">Edit</th>
-            </tr>
-          </thead>
-          <tbody>
+      <div className="brand-card overflow-hidden">
+        {claims.length > 0 ? (
+          <div className="divide-y divide-[color:var(--color-line)]">
             {claims.map((claim, index) => (
-              <tr key={index} className="text-center">
-                 <td className="border p-2">{index + 1}</td>
-                <td className="border p-2">{policies.find((p) => p._id === claim.policyId)?.name || "Unknown"}</td>
-                <td className="border p-2">{claim.status}</td>
-                <td className="border p-2">{claim.claimAmount}</td>
-                <td className="border p-2">{claim.appliedDate}</td>
-                <td className="border p-2">{claim.reasonForClaim}</td>
-                
-                <td className="border p-2">
-                  <button style={{color:"#c52929"}}className="text-black" onClick={() => handleEdit(claim)}>
-                    <FaEdit size={16} />
+              <div key={index} className={`flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between ${index % 2 === 1 ? "bg-[color:var(--color-row-alt)]" : "bg-card"}`}>
+                <div>
+                  <p className="text-sm font-semibold text-muted">Claim #{index + 1}</p>
+                  <p className="text-base font-bold text-ink">{policies.find((p) => p._id === claim.policyId)?.name || "Unknown"}</p>
+                  <p className="mt-1 text-sm text-muted">{claim.reasonForClaim} · {claim.appliedDate}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <p className="font-mono text-sm font-bold text-accent-deep">₹ {claim.claimAmount}</p>
+                  <StatusBadge status={claim.status} />
+                  <button onClick={() => handleEdit(claim)} className="rounded-full border border-[color:var(--color-line)] p-2 text-accent transition hover:bg-[color:var(--color-tint)]">
+                    <FiEdit3 size={16} />
                   </button>
-                </td>
-              </tr>
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+          </div>
+        ) : (
+          <div className="p-6 text-center text-muted">No claims found</div>
+        )}
+      </div>
+    </section>
   );
 }
 

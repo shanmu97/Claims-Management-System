@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Contexts/AuthContext";
-import { FaEdit } from "react-icons/fa";
+import { FiEdit3 } from "react-icons/fi";
 
 function MyPolicies() {
   const [policies, setPolicies] = useState([]);
@@ -19,16 +19,13 @@ function MyPolicies() {
   const fetchPolicies = async () => {
     if (!token) return;
     try {
-      const response = await fetch(
-        "https://claims-management-system-kkd6.onrender.com/policyholder/policies",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch("https://claims-management-system-kkd6.onrender.com/policyholder/policies", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Unauthorized or failed to fetch policies");
@@ -58,17 +55,14 @@ function MyPolicies() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `https://claims-management-system-kkd6.onrender.com/policyholder/${phId}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(editData),
-        }
-      );
+      const response = await fetch(`https://claims-management-system-kkd6.onrender.com/policyholder/${phId}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editData),
+      });
 
       if (!response.ok) {
         console.log("Failed to update policy");
@@ -83,91 +77,55 @@ function MyPolicies() {
   };
 
   return (
-    <div className="w-full p-4">
-      <h1 className="text-center font-bold text-3xl mt-4 text-gray-800">
-        My Policies
-      </h1>
-      <div className="overflow-x-auto mt-6">
-        <table className="w-full border-collapse border border-gray-300">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="border border-gray-300 p-2 w-20">S. No</th>
-              <th className="border border-gray-300 p-2">Name</th>
-              <th className="border border-gray-300 p-2">Type</th>
-              <th className="border border-gray-300 p-2">Amount</th>
-              <th className="border border-gray-300 p-2">Premium</th>
-              {role !== "policyholder" && <th className="border border-gray-300 p-2 w-16">Edit</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {policies.length > 0 ? (
-              policies.map((policy, index) => (
-                <tr key={index} className="text-center">
-                  <td className="border border-gray-300 p-2 w-20">{index + 1}</td>
-                  <td className="border border-gray-300 p-2">{policy.name}</td>
-                  <td className="border border-gray-300 p-2">{policy.type}</td>
-                  <td className="border border-gray-300 p-2">{policy.amount}</td>
-                  <td className="border border-gray-300 p-2">{policy.premium}</td>
-                  {role !== "policyholder" && (
-                    <td className="border border-gray-300 p-2">
-                      <button className="m-2 p-2 rounded-full" onClick={() => handleEditClick(policy)}>
-                        <FaEdit />
-                      </button>
-                    </td>
-                  )}
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={role !== "policyholder" ? "6" : "5"} className="border border-gray-300 p-4 text-center">
-                  No policies found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+    <section className="brand-section">
+      <div className="mb-4 flex items-center justify-between">
+        <div>
+          <p className="section-label">My policies</p>
+          <h2 className="text-2xl font-bold text-ink">Your active coverage</h2>
+        </div>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        {policies.length > 0 ? (
+          policies.map((policy, index) => (
+            <div key={index} className="brand-card p-5">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="section-label">Policy {index + 1}</p>
+                  <h3 className="mt-1 text-lg font-bold text-ink">{policy.name}</h3>
+                </div>
+                <span className="type-chip">{policy.type}</span>
+              </div>
+              <div className="mt-4 rounded-xl bg-[color:var(--color-row-alt)] p-4">
+                <p className="font-mono text-lg font-bold text-accent-deep">₹ {policy.amount}</p>
+                <p className="mt-1 text-sm text-muted">{policy.premium}</p>
+              </div>
+              {role !== "policyholder" && (
+                <button onClick={() => handleEditClick(policy)} className="mt-4 inline-flex items-center gap-2 rounded-full border border-[color:var(--color-line)] px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[color:var(--color-row-alt)]">
+                  <FiEdit3 size={15} />
+                  Edit KYC
+                </button>
+              )}
+            </div>
+          ))
+        ) : (
+          <div className="brand-card p-6 text-muted md:col-span-2">No policies found</div>
+        )}
       </div>
 
       {showEditModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 className="text-lg font-semibold mb-4">Edit Policy Details</h2>
-            <form onSubmit={handleSubmit}>
-              <label className="block mb-2">Date of Birth (YYYY-MM-DD)</label>
-              <input
-                type="date"
-                name="dob"
-                value={editData.dob}
-                onChange={handleChange}
-                className="w-full border p-2 mb-2 rounded"
-                required
-              />
-
-              <label className="block mb-2">Address</label>
-              <input
-                type="text"
-                name="address"
-                value={editData.address}
-                onChange={handleChange}
-                className="w-full border p-2 mb-2 rounded"
-                required
-              />
-
-              <label className="block mb-2">PAN Card</label>
-              <input
-                type="text"
-                name="PAN_NUMBER"
-                value={editData.PAN_NUMBER}
-                onChange={handleChange}
-                className="w-full border p-2 mb-4 rounded"
-                required
-              />
-
-              <div className="flex justify-end gap-2">
-                <button type="button" className="bg-gray-400 text-white p-2 rounded" onClick={() => setShowEditModal(false)}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[color:var(--color-navy)]/70 px-4">
+          <div className="brand-card w-full max-w-md p-6">
+            <h2 className="text-lg font-semibold text-ink">Edit policy details</h2>
+            <form onSubmit={handleSubmit} className="mt-4 space-y-3">
+              <input type="date" name="dob" value={editData.dob} onChange={handleChange} className="brand-input" required />
+              <input type="text" name="address" value={editData.address} onChange={handleChange} className="brand-input" required />
+              <input type="text" name="PAN_NUMBER" value={editData.PAN_NUMBER} onChange={handleChange} className="brand-input" required />
+              <div className="flex justify-end gap-2 pt-2">
+                <button type="button" className="rounded-full border border-[color:var(--color-line)] px-4 py-2 text-sm font-semibold text-ink" onClick={() => setShowEditModal(false)}>
                   Cancel
                 </button>
-                <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                <button type="submit" className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-card transition hover:bg-accent-deep">
                   Save
                 </button>
               </div>
@@ -175,7 +133,7 @@ function MyPolicies() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 
