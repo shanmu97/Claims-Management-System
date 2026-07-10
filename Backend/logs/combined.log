@@ -1,0 +1,2 @@
+{"level":"info","message":"Server runs on port 9797","service":"claims-backend","timestamp":"2026-07-10 09:00:15"}
+{"level":"info","message":"MongoDB Connected Successfully","service":"claims-backend","timestamp":"2026-07-10 09:00:16"}

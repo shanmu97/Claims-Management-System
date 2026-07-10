@@ -39,6 +39,11 @@ function MyClaims() {
 
   useEffect(() => {
     const fetchClaims = async () => {
+      if (!token) {
+        setClaims([]);
+        setError(null);
+        return;
+      }
       try {
         const response = await fetch("http://localhost:9797/claims/", {
           headers: {
@@ -52,6 +57,7 @@ function MyClaims() {
 
         const data = await response.json();
         setClaims(data);
+        setError(null);
       } catch (error) {
         setError(error.message);
       }
@@ -198,7 +204,9 @@ function MyClaims() {
       {error && <div className="mb-4 error-strip">{error}</div>}
 
       <div className="brand-card overflow-hidden">
-        {claims.length > 0 ? (
+        {!token ? (
+          <div className="p-6 text-center text-muted">Please login to check your claims.</div>
+        ) : claims.length > 0 ? (
           <div className="divide-y divide-[color:var(--color-line)]">
             {claims.map((claim, index) => (
               <div key={index} className={`flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between ${index % 2 === 1 ? "bg-[color:var(--color-row-alt)]" : "bg-card"}`}>

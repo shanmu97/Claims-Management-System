@@ -86,7 +86,9 @@ function MyPolicies() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        {policies.length > 0 ? (
+        {!token ? (
+          <div className="brand-card p-6 text-muted md:col-span-2 text-center">Please login to check your active policies.</div>
+        ) : policies.length > 0 ? (
           policies.map((policy, index) => (
             <div key={index} className="brand-card p-5">
               <div className="flex items-start justify-between gap-4">
@@ -109,7 +111,7 @@ function MyPolicies() {
             </div>
           ))
         ) : (
-          <div className="brand-card p-6 text-muted md:col-span-2">No policies found</div>
+          <div className="brand-card p-6 text-muted md:col-span-2 text-center">No policies found</div>
         )}
       </div>
 
