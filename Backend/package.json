@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "Server.js",
   "scripts": {
-    "start": "node Backend/server.js",
-    "server": "nodemon Backend/server.js"
+    "start": "node Server.js",
+    "server": "nodemon Server.js"
   },
   "author": "",
   "license": "ISC",
