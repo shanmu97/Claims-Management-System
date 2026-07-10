@@ -1,2 +1,294 @@
 {"level":"info","message":"Server runs on port 9797","service":"claims-backend","timestamp":"2026-07-10 09:00:15"}
 {"level":"info","message":"MongoDB Connected Successfully","service":"claims-backend","timestamp":"2026-07-10 09:00:16"}
+{"level":"info","message":"Server runs on port 9797","service":"claims-backend","timestamp":"2026-07-10 09:02:40"}
+{"level":"info","message":"MongoDB Connected Successfully","service":"claims-backend","timestamp":"2026-07-10 09:02:40"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 2.187 ms","service":"claims-backend","timestamp":"2026-07-10 09:02:56"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:02:56"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:02:56"}
+{"level":"info","message":"POST /users/login 401 363 - 52.109 ms","service":"claims-backend","timestamp":"2026-07-10 09:02:56"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 0.445 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:01"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:01"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:01"}
+{"level":"info","message":"POST /users/login 401 363 - 28.333 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:01"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:02"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:02"}
+{"level":"info","message":"POST /users/login 401 363 - 34.727 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:02"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 0.147 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:12"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:12"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:12"}
+{"level":"info","message":"POST /users/login 401 363 - 28.858 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:12"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:13"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:13"}
+{"level":"info","message":"POST /users/login 401 363 - 33.069 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:13"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"info","message":"POST /users/login 401 363 - 28.241 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"info","message":"POST /users/login 401 363 - 31.710 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"info","message":"POST /users/login 401 363 - 28.437 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"info","message":"POST /users/login 401 363 - 26.995 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:14"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 0.242 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:37"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:37"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:03:37"}
+{"level":"info","message":"POST /users/login 401 363 - 33.749 ms","service":"claims-backend","timestamp":"2026-07-10 09:03:37"}
+{"level":"info","message":"Server runs on port 9797","service":"claims-backend","timestamp":"2026-07-10 09:04:58"}
+{"level":"info","message":"MongoDB Connected Successfully","service":"claims-backend","timestamp":"2026-07-10 09:04:58"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 2.572 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Successful login for email: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"POST /users/login 200 296 - 137.294 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.093 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 0.050 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.027 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.019 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Retrieving user info for user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Get all claims request from user ID: 6a50526c0eb761b84e34ef25, role: admin","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"GET /users/me 200 114 - 52.177 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"No policyholder profile found for user ID: 6a50526c0eb761b84e34ef25. Returning empty claims list.","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"GET /claims/ 200 2 - 51.624 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 55.518 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"OPTIONS /policyholder/ 204 0 - 0.037 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Retrieve all policyholders request","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Successfully retrieved 3 policyholders","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"GET /policyholder/ 200 1248 - 26.919 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 54.166 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:04"}
+{"level":"info","message":"Retrieve all policies request","service":"claims-backend","timestamp":"2026-07-10 09:05:09"}
+{"level":"info","message":"Successfully retrieved 3 policies","service":"claims-backend","timestamp":"2026-07-10 09:05:09"}
+{"level":"info","message":"GET /policies/ 200 651 - 34.003 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:09"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 0.151 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.106 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.248 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"Get all claims request from user ID: 6a50526c0eb761b84e34ef25, role: admin","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"Retrieving user info for user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"No policyholder profile found for user ID: 6a50526c0eb761b84e34ef25. Returning empty claims list.","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"GET /claims/ 304 - - 56.398 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"GET /users/me 304 - - 65.839 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 65.701 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"OPTIONS /policyholder/ 204 0 - 0.078 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"Retrieve all policyholders request","service":"claims-backend","timestamp":"2026-07-10 09:05:11"}
+{"level":"info","message":"Successfully retrieved 3 policyholders","service":"claims-backend","timestamp":"2026-07-10 09:05:12"}
+{"level":"info","message":"GET /policyholder/ 304 - - 31.847 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:12"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.060 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:18"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50526c0eb761b84e34ef25)","service":"claims-backend","timestamp":"2026-07-10 09:05:18"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:18"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:05:19"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 52.641 ms","service":"claims-backend","timestamp":"2026-07-10 09:05:19"}
+{"level":"info","message":"Server runs on port 9797","service":"claims-backend","timestamp":"2026-07-10 09:06:26"}
+{"level":"error","message":"MongoDB Connection Error: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\n    at _handleConnectionErrors (/Users/shanmukhareddyvasa/Claims-Management-System/Backend/node_modules/mongoose/lib/connection.js:1154:11)\n    at NativeConnection.openUri (/Users/shanmukhareddyvasa/Claims-Management-System/Backend/node_modules/mongoose/lib/connection.js:1085:11) {\n  [stack]: [Getter/Setter],\n  message: \"Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\",\n  errorLabelSet: Set(0) {},\n  reason: TopologyDescription {\n    type: 'ReplicaSetNoPrimary',\n    servers: Map(3) {\n      'ac-dzd6wge-shard-00-00.ci36vra.mongodb.net:27017' => ServerDescription {\n        address: 'ac-dzd6wge-shard-00-00.ci36vra.mongodb.net:27017',\n        type: 'Unknown',\n        hosts: [ [length]: 0 ],\n        passives: [ [length]: 0 ],\n        arbiters: [ [length]: 0 ],\n        tags: {},\n        minWireVersion: 0,\n        maxWireVersion: 0,\n        roundTripTime: -1,\n        minRoundTripTime: 0,\n        lastUpdateTime: 691363350,\n        lastWriteDate: 0,\n        error: MongoNetworkError: 80DDD3F401000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:918:SSL alert number 80\n        \n            at TLSSocket.<anonymous> (/Users/shanmukhareddyvasa/Claims-Management-System/Backend/node_modules/mongodb/lib/cmap/connect.js:285:44)\n            at Object.onceWrapper (node:events:631:12)\n            at TLSSocket.emit (node:events:509:20)\n            at emitErrorNT (node:internal/streams/destroy:170:8)\n            at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n            at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {\n          [stack]: [Getter/Setter],\n          [message]: '80DDD3F401000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:918:SSL alert number 80\\n',\n          [cause]: [Error],\n          errorLabelSet: [Set],\n          beforeHandshake: false,\n          [name]: [Getter],\n          [errorLabels]: [Getter],\n          [errmsg]: [Getter]\n        },\n        topologyVersion: null,\n        setName: null,\n        setVersion: null,\n        electionId: null,\n        logicalSessionTimeoutMinutes: null,\n        maxMessageSizeBytes: null,\n        maxWriteBatchSize: null,\n        maxBsonObjectSize: null,\n        primary: null,\n        me: null,\n        '$clusterTime': null,\n        iscryptd: false,\n        [hostAddress]: [Getter],\n        [allHosts]: [Getter],\n        [isReadable]: [Getter],\n        [isDataBearing]: [Getter],\n        [isWritable]: [Getter],\n        [host]: [Getter],\n        [port]: [Getter]\n      },\n      'ac-dzd6wge-shard-00-01.ci36vra.mongodb.net:27017' => ServerDescription {\n        address: 'ac-dzd6wge-shard-00-01.ci36vra.mongodb.net:27017',\n        type: 'Unknown',\n        hosts: [ [length]: 0 ],\n        passives: [ [length]: 0 ],\n        arbiters: [ [length]: 0 ],\n        tags: {},\n        minWireVersion: 0,\n        maxWireVersion: 0,\n        roundTripTime: -1,\n        minRoundTripTime: 0,\n        lastUpdateTime: 691363350,\n        lastWriteDate: 0,\n        error: MongoNetworkError: 80DDD3F401000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:918:SSL alert number 80\n        \n            at TLSSocket.<anonymous> (/Users/shanmukhareddyvasa/Claims-Management-System/Backend/node_modules/mongodb/lib/cmap/connect.js:285:44)\n            at Object.onceWrapper (node:events:631:12)\n            at TLSSocket.emit (node:events:509:20)\n            at emitErrorNT (node:internal/streams/destroy:170:8)\n            at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n            at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {\n          [stack]: [Getter/Setter],\n          [message]: '80DDD3F401000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:918:SSL alert number 80\\n',\n          [cause]: [Error],\n          errorLabelSet: [Set],\n          beforeHandshake: false,\n          [name]: [Getter],\n          [errorLabels]: [Getter],\n          [errmsg]: [Getter]\n        },\n        topologyVersion: null,\n        setName: null,\n        setVersion: null,\n        electionId: null,\n        logicalSessionTimeoutMinutes: null,\n        maxMessageSizeBytes: null,\n        maxWriteBatchSize: null,\n        maxBsonObjectSize: null,\n        primary: null,\n        me: null,\n        '$clusterTime': null,\n        iscryptd: false,\n        [hostAddress]: [Getter],\n        [allHosts]: [Getter],\n        [isReadable]: [Getter],\n        [isDataBearing]: [Getter],\n        [isWritable]: [Getter],\n        [host]: [Getter],\n        [port]: [Getter]\n      },\n      'ac-dzd6wge-shard-00-02.ci36vra.mongodb.net:27017' => ServerDescription {\n        address: 'ac-dzd6wge-shard-00-02.ci36vra.mongodb.net:27017',\n        type: 'Unknown',\n        hosts: [ [length]: 0 ],\n        passives: [ [length]: 0 ],\n        arbiters: [ [length]: 0 ],\n        tags: {},\n        minWireVersion: 0,\n        maxWireVersion: 0,\n        roundTripTime: -1,\n        minRoundTripTime: 0,\n        lastUpdateTime: 691363352,\n        lastWriteDate: 0,\n        error: MongoNetworkError: 80DDD3F401000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:918:SSL alert number 80\n        \n            at TLSSocket.<anonymous> (/Users/shanmukhareddyvasa/Claims-Management-System/Backend/node_modules/mongodb/lib/cmap/connect.js:285:44)\n            at Object.onceWrapper (node:events:631:12)\n            at TLSSocket.emit (node:events:509:20)\n            at emitErrorNT (node:internal/streams/destroy:170:8)\n            at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n            at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {\n          [stack]: [Getter/Setter],\n          [message]: '80DDD3F401000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:918:SSL alert number 80\\n',\n          [cause]: [Error],\n          errorLabelSet: [Set],\n          beforeHandshake: false,\n          [name]: [Getter],\n          [errorLabels]: [Getter],\n          [errmsg]: [Getter]\n        },\n        topologyVersion: null,\n        setName: null,\n        setVersion: null,\n        electionId: null,\n        logicalSessionTimeoutMinutes: null,\n        maxMessageSizeBytes: null,\n        maxWriteBatchSize: null,\n        maxBsonObjectSize: null,\n        primary: null,\n        me: null,\n        '$clusterTime': null,\n        iscryptd: false,\n        [hostAddress]: [Getter],\n        [allHosts]: [Getter],\n        [isReadable]: [Getter],\n        [isDataBearing]: [Getter],\n        [isWritable]: [Getter],\n        [host]: [Getter],\n        [port]: [Getter]\n      }\n    },\n    stale: false,\n    compatible: true,\n    heartbeatFrequencyMS: 10000,\n    localThresholdMS: 15,\n    setName: 'atlas-9ek10z-shard-0',\n    maxElectionId: null,\n    maxSetVersion: null,\n    commonWireVersion: 0,\n    logicalSessionTimeoutMinutes: null,\n    [error]: [Getter],\n    [hasKnownServers]: [Getter],\n    [hasDataBearingServers]: [Getter]\n  },\n  code: undefined,\n  [name]: 'MongooseServerSelectionError'\n}","service":"claims-backend","timestamp":"2026-07-10 09:06:56"}
+{"level":"info","message":"Server runs on port 9797","service":"claims-backend","timestamp":"2026-07-10 09:08:38"}
+{"level":"info","message":"MongoDB Connected Successfully","service":"claims-backend","timestamp":"2026-07-10 09:08:38"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 1.744 ms","service":"claims-backend","timestamp":"2026-07-10 09:08:52"}
+{"level":"warn","message":"Auth failed: User not found for decoded ID 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:08:52"}
+{"level":"warn","message":"Auth failed: Invalid or expired token on GET /policies. Error: Not authorised","service":"claims-backend","timestamp":"2026-07-10 09:08:52"}
+{"level":"info","message":"GET /policyholder/policies 401 358 - 36.939 ms","service":"claims-backend","timestamp":"2026-07-10 09:08:52"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 0.275 ms","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.143 ms","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"warn","message":"Auth failed: User not found for decoded ID 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"warn","message":"Auth failed: Invalid or expired token on GET /me. Error: Not authorised","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"info","message":"GET /users/me 401 358 - 30.142 ms","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"warn","message":"Auth failed: User not found for decoded ID 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"warn","message":"Auth failed: Invalid or expired token on GET /policies. Error: Not authorised","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"warn","message":"Auth failed: User not found for decoded ID 6a50526c0eb761b84e34ef25","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"warn","message":"Auth failed: Invalid or expired token on GET /. Error: Not authorised","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"info","message":"GET /claims/ 401 358 - 31.140 ms","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"info","message":"GET /policyholder/policies 401 358 - 38.635 ms","service":"claims-backend","timestamp":"2026-07-10 09:08:54"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 0.125 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:04"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:09:04"}
+{"level":"warn","message":"Login failed: Invalid credentials for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:09:04"}
+{"level":"info","message":"POST /users/login 401 363 - 33.225 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:04"}
+{"level":"info","message":"OPTIONS /users/ 204 0 - 0.250 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:24"}
+{"level":"info","message":"Registration request received for email: bharath@gmail.com, role: admin","service":"claims-backend","timestamp":"2026-07-10 09:09:24"}
+{"level":"info","message":"User successfully registered: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:09:24"}
+{"level":"info","message":"POST /users/ 200 260 - 148.134 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:24"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 0.214 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Successful login for email: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"POST /users/login 200 296 - 128.389 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.084 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 0.022 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.032 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.020 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Retrieving user info for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Get all claims request from user ID: 6a50696ce130125375af35bd, role: admin","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 47.408 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"GET /users/me 200 114 - 45.241 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"OPTIONS /policyholder/ 204 0 - 0.026 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"No policyholder profile found for user ID: 6a50696ce130125375af35bd. Returning empty claims list.","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"GET /claims/ 200 2 - 47.821 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Retrieve all policyholders request","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"No policyholders found in the system","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"GET /policyholder/ 404 376 - 23.597 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 46.979 ms","service":"claims-backend","timestamp":"2026-07-10 09:09:34"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 0.110 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Successful login for email: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"POST /users/login 200 296 - 120.928 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.033 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 0.191 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.012 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.013 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Retrieving user info for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Get all claims request from user ID: 6a50696ce130125375af35bd, role: agent","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 46.855 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"GET /users/me 200 114 - 49.502 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"OPTIONS /policyholder/ 204 0 - 0.049 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Retrieve all policyholders request","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"No policyholder profile found for user ID: 6a50696ce130125375af35bd. Returning empty claims list.","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"GET /claims/ 304 - - 53.523 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"No policyholders found in the system","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"GET /policyholder/ 404 376 - 22.994 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 46.791 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:23"}
+{"level":"info","message":"Retrieve all policies request","service":"claims-backend","timestamp":"2026-07-10 09:10:25"}
+{"level":"info","message":"Successfully retrieved 0 policies","service":"claims-backend","timestamp":"2026-07-10 09:10:25"}
+{"level":"info","message":"GET /policies/ 200 15 - 29.980 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:25"}
+{"level":"info","message":"OPTIONS /policies/ 204 0 - 0.169 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:48"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:10:48"}
+{"level":"info","message":"Add policy request by user ID: 6a50696ce130125375af35bd, role: agent","service":"claims-backend","timestamp":"2026-07-10 09:10:48"}
+{"level":"info","message":"Policy successfully added (ID: 6a5069c0e130125375af35d6, Name: HCL Life Insurance)","service":"claims-backend","timestamp":"2026-07-10 09:10:48"}
+{"level":"info","message":"POST /policies/ 201 - - 89.817 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:48"}
+{"level":"info","message":"Retrieve all policies request","service":"claims-backend","timestamp":"2026-07-10 09:10:48"}
+{"level":"info","message":"Successfully retrieved 1 policies","service":"claims-backend","timestamp":"2026-07-10 09:10:48"}
+{"level":"info","message":"GET /policies/ 200 243 - 25.347 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:48"}
+{"level":"info","message":"Retrieve all policies request","service":"claims-backend","timestamp":"2026-07-10 09:10:53"}
+{"level":"info","message":"Successfully retrieved 1 policies","service":"claims-backend","timestamp":"2026-07-10 09:10:53"}
+{"level":"info","message":"GET /policies/ 304 - - 25.560 ms","service":"claims-backend","timestamp":"2026-07-10 09:10:53"}
+{"level":"info","message":"OPTIONS /users/login 204 0 - 0.352 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Login attempt for email: bharath@gmail.com","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Successful login for email: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"POST /users/login 200 303 - 119.506 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.030 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 0.014 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.018 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.011 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Retrieving user info for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Get all claims request from user ID: 6a50696ce130125375af35bd, role: policyholder","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 46.097 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"GET /users/me 200 121 - 48.228 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"No policyholder profile found for user ID: 6a50696ce130125375af35bd. Returning empty claims list.","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"GET /claims/ 304 - - 48.093 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"OPTIONS /policyholder/ 204 0 - 0.031 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Retrieve all policyholders request","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"No policyholders found in the system","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"GET /policyholder/ 404 376 - 21.587 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"warn","message":"Retrieve policies failed: Policyholder profile not found for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"GET /policyholder/policies 404 376 - 47.364 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:31"}
+{"level":"info","message":"Retrieve all policies request","service":"claims-backend","timestamp":"2026-07-10 09:11:33"}
+{"level":"info","message":"Successfully retrieved 1 policies","service":"claims-backend","timestamp":"2026-07-10 09:11:33"}
+{"level":"info","message":"GET /policies/ 304 - - 26.844 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:33"}
+{"level":"info","message":"OPTIONS /policyholder/ 204 0 - 0.253 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:44"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:44"}
+{"level":"info","message":"Apply policy request received for policyId: 6a5069c0e130125375af35d6 by user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:44"}
+{"level":"info","message":"Creating new PolicyHolder profile for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:44"}
+{"level":"info","message":"PolicyHolder profile created successfully (ID: 6a5069f8e130125375af35e8)","service":"claims-backend","timestamp":"2026-07-10 09:11:44"}
+{"level":"info","message":"POST /policyholder/ 201 294 - 121.288 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:44"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 0.124 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.131 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.071 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Get all claims request from user ID: 6a50696ce130125375af35bd, role: policyholder","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Retrieving user info for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"GET /users/me 304 - - 52.586 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Retrieve all policyholders request","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Retrieved 1 subscribed policies for policyholder: 6a5069f8e130125375af35e8","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"GET /policyholder/policies 200 230 - 72.720 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Found 0 claims for user ID: 6a50696ce130125375af35bd (PolicyHolder: 6a5069f8e130125375af35e8)","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"GET /claims/ 304 - - 76.351 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"Successfully retrieved 1 policyholders","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"GET /policyholder/ 200 296 - 28.554 ms","service":"claims-backend","timestamp":"2026-07-10 09:11:48"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.084 ms","service":"claims-backend","timestamp":"2026-07-10 09:12:02"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:12:02"}
+{"level":"info","message":"Apply claim request received. policyId: , amount: 25000","service":"claims-backend","timestamp":"2026-07-10 09:12:02"}
+{"level":"warn","message":"Apply claim failed: Missing required fields","service":"claims-backend","timestamp":"2026-07-10 09:12:02"}
+{"level":"info","message":"POST /claims/ 400 913 - 29.271 ms","service":"claims-backend","timestamp":"2026-07-10 09:12:02"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 0.290 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.025 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.017 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.014 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Retrieving user info for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Get all claims request from user ID: 6a50696ce130125375af35bd, role: policyholder","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"GET /users/me 304 - - 52.743 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"OPTIONS /policyholder/ 204 0 - 0.030 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Retrieve all policyholders request","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Retrieved 1 subscribed policies for policyholder: 6a5069f8e130125375af35e8","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"GET /policyholder/policies 304 - - 74.645 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Successfully retrieved 1 policyholders","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"GET /policyholder/ 304 - - 23.252 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Found 0 claims for user ID: 6a50696ce130125375af35bd (PolicyHolder: 6a5069f8e130125375af35e8)","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"GET /claims/ 304 - - 76.545 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Retrieved 1 subscribed policies for policyholder: 6a5069f8e130125375af35e8","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"GET /policyholder/policies 304 - - 72.297 ms","service":"claims-backend","timestamp":"2026-07-10 09:14:30"}
+{"level":"info","message":"Server runs on port 9797","service":"claims-backend","timestamp":"2026-07-10 09:16:03"}
+{"level":"info","message":"MongoDB Connected Successfully","service":"claims-backend","timestamp":"2026-07-10 09:16:04"}
+{"level":"info","message":"OPTIONS /users/me 204 0 - 1.026 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:12"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.116 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:12"}
+{"level":"info","message":"OPTIONS /claims/ 204 0 - 0.149 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:12"}
+{"level":"info","message":"OPTIONS /policyholder/policies 204 0 - 0.080 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:12"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Retrieving user info for user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Get all claims request from user ID: 6a50696ce130125375af35bd, role: policyholder","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"GET /users/me 304 - - 54.180 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"OPTIONS /policyholder/ 204 0 - 0.047 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Retrieve all policyholders request","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Retrieved 1 subscribed policies for policyholder: 6a5069f8e130125375af35e8","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"GET /policyholder/policies 304 - - 89.184 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Found 0 claims for user ID: 6a50696ce130125375af35bd (PolicyHolder: 6a5069f8e130125375af35e8)","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"GET /claims/ 304 - - 99.912 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Successfully retrieved 1 policyholders","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"GET /policyholder/ 304 - - 26.286 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Auth successful for user: bharath@gmail.com (ID: 6a50696ce130125375af35bd)","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Retrieve all subscribed policies for policyholder user ID: 6a50696ce130125375af35bd","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"Retrieved 1 subscribed policies for policyholder: 6a5069f8e130125375af35e8","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}
+{"level":"info","message":"GET /policyholder/policies 304 - - 73.851 ms","service":"claims-backend","timestamp":"2026-07-10 09:16:13"}

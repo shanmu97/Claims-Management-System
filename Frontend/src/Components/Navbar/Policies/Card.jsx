@@ -2,9 +2,11 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FiCheckCircle, FiEdit3, FiTrash2 } from "react-icons/fi";
 import { useAuth } from "../../../Contexts/AuthContext";
+import { usePolicy } from "../../../Contexts/PoliciesContext";
 
 function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) {
   const { role, token } = useAuth();
+  const { fetchPolicies } = usePolicy();
   const reduceMotion = useReducedMotion();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -96,6 +98,7 @@ function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) 
           PAN_NUMBER: "",
           policyId: id,
         });
+        await fetchPolicies();
       } else {
         setErrorMsg(data.message || "Failed to submit policyholder data");
       }

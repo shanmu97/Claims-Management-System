@@ -114,24 +114,20 @@ const getAllPolicyHolders = asyncHandler(async (req, res) => {
 const getAllPolicies = asyncHandler(async (req, res) => {
     logger.info(`Retrieve all subscribed policies for policyholder user ID: ${req.user._id}`);
     const policyHolder = await PolicyHolder.findOne({ policyHolderId: req.user._id });
+    
     if (!policyHolder) {
-        logger.warn(`Retrieve policies failed: Policyholder profile not found for user ID: ${req.user._id}`);
-        res.status(404);
-        throw new Error("Policyholder not found.");
+        logger.info(`No policyholder profile found for user ID: ${req.user._id}. Returning empty policies list.`);
+        return res.status(200).json([]);
     }
+
     const policies = await Policy.find({ _id: { $in: policyHolder.policies } });
-    if (!policies) {
-        logger.warn(`Retrieve policies failed: Database query returned null for policyholder: ${policyHolder._id}`);
-        res.status(404);
-        throw new Error("No policies found for this user.");
+    if (!policies || policies.length === 0) {
+        logger.info(`No policies found for policyholder: ${policyHolder._id}. Returning empty policies list.`);
+        return res.status(200).json([]);
     }
-    if(policies.length===0){
-        logger.info(`No policies found for policyholder: ${policyHolder._id}`);
-        res.status(200).json("No policies are found")
-    } else {
-        logger.info(`Retrieved ${policies.length} subscribed policies for policyholder: ${policyHolder._id}`);
-        res.status(200).json(policies);
-    }
+
+    logger.info(`Retrieved ${policies.length} subscribed policies for policyholder: ${policyHolder._id}`);
+    res.status(200).json(policies);
 });
 
 module.exports = {applyPolicy,updatePolicy,getAllPolicyHolders,getAllPolicies}

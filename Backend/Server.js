@@ -32,7 +32,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(errorHandler)
 
-mongoose.connect("mongodb+srv://shanmukhareddyvasa:shanmukha12345@shanmukhacluster.nmaie.mongodb.net/?appName=ShanmukhaCLuster",{
+mongoose.connect("mongodb+srv://iambharath1417_db_user:Wot9pBVna4skZUnj@cluster0.ci36vra.mongodb.net/Claims-Management-System?appName=Cluster0",{
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(()=>{
