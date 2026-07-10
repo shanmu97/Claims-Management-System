@@ -35,7 +35,7 @@ function LoginCard() {
 
     if (validate()) {
       try {
-        const response = await fetch("https://claims-management-system-kkd6.onrender.com/users/login", {
+        const response = await fetch("http://localhost:9797/users/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),

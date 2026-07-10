@@ -40,7 +40,7 @@ function MyClaims() {
   useEffect(() => {
     const fetchClaims = async () => {
       try {
-        const response = await fetch("https://claims-management-system-kkd6.onrender.com/claims/", {
+        const response = await fetch("http://localhost:9797/claims/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -69,7 +69,7 @@ function MyClaims() {
     setError(null);
 
     try {
-      const url = isEditing ? `https://claims-management-system-kkd6.onrender.com/claims/${editingClaimId}` : "https://claims-management-system-kkd6.onrender.com/claims/";
+      const url = isEditing ? `http://localhost:9797/claims/${editingClaimId}` : "http://localhost:9797/claims/";
       const method = isEditing ? "PUT" : "POST";
 
       const response = await fetch(url, {

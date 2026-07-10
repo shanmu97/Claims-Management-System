@@ -19,7 +19,7 @@ function MyPolicies() {
   const fetchPolicies = async () => {
     if (!token) return;
     try {
-      const response = await fetch("https://claims-management-system-kkd6.onrender.com/policyholder/policies", {
+      const response = await fetch("http://localhost:9797/policyholder/policies", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -55,7 +55,7 @@ function MyPolicies() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://claims-management-system-kkd6.onrender.com/policyholder/${phId}`, {
+      const response = await fetch(`http://localhost:9797/policyholder/${phId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

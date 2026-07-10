@@ -61,7 +61,7 @@ function RegisterCard() {
     }
 
     try {
-      await axios.post("https://claims-management-system-kkd6.onrender.com/users/", {
+      await axios.post("http://localhost:9797/users/", {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,

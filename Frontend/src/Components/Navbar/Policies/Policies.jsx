@@ -23,7 +23,7 @@ function Policies() {
 
   const fetchPolicies = async () => {
     try {
-      const res = await axios.get("https://claims-management-system-kkd6.onrender.com/policies/");
+      const res = await axios.get("http://localhost:9797/policies/");
       setPolicies(res.data.policies);
     } catch (err) {
       console.error(err);
@@ -41,7 +41,7 @@ function Policies() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://claims-management-system-kkd6.onrender.com/policies/", formData, {
+      await axios.post("http://localhost:9797/policies/", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

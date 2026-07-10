@@ -12,7 +12,7 @@ export const PolicyProvider = ({ children }) => {
       if (!token) return;
       try {
         const response = await fetch(
-          "https://claims-management-system-kkd6.onrender.com/policyholder/policies",
+          "http://localhost:9797/policyholder/policies",
           {
             method: "GET",
             headers: {

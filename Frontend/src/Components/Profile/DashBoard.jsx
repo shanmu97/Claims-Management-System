@@ -13,7 +13,7 @@ function Dashboard() {
     const fetchUserData = async () => {
       if (!token) return;
       try {
-        const response1 = await fetch("https://claims-management-system-kkd6.onrender.com/users/me", {
+        const response1 = await fetch("http://localhost:9797/users/me", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -27,7 +27,7 @@ function Dashboard() {
         setFormData({ name: data1.name, phone: data1.phone, email: data1.email, role: data1.role });
         setRole(data1.role);
 
-        const response2 = await fetch("https://claims-management-system-kkd6.onrender.com/policyholder/", {
+        const response2 = await fetch("http://localhost:9797/policyholder/", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function Dashboard() {
   const handleEdit = async () => {
     if (!token) return;
     try {
-      const response = await fetch("https://claims-management-system-kkd6.onrender.com/users/edit", {
+      const response = await fetch("http://localhost:9797/users/edit", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

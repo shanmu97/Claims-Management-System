@@ -21,7 +21,7 @@ function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) 
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`https://claims-management-system-kkd6.onrender.com/policies/edit/${id}`, {
+      const response = await fetch(`http://localhost:9797/policies/edit/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) 
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("https://claims-management-system-kkd6.onrender.com/policyholder/", {
+      const response = await fetch("http://localhost:9797/policyholder/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function InsuranceBox({ name, description, amount, premium, id, onEdit, type }) 
     if (!window.confirm("Are you sure you want to delete this policy?")) return;
 
     try {
-      const response = await fetch(`https://claims-management-system-kkd6.onrender.com/policies/delete/${id}`, {
+      const response = await fetch(`http://localhost:9797/policies/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
