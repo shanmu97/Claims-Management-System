@@ -1,5 +1,14 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
+const { Buffer, SlowBuffer } = require('buffer')
+
+// Compatibility shim for newer Node versions that no longer expose the old SlowBuffer.equal API
+if (typeof SlowBuffer === 'function' && Buffer?.prototype?.equal) {
+  if (!SlowBuffer.prototype.equal) {
+    SlowBuffer.prototype.equal = Buffer.prototype.equal
+  }
+}
+
 const mongoose = require('mongoose')
 const {errorHandler} = require('./Middleware/errorMiddleware')
 const cors = require('cors')
