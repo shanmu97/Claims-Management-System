@@ -34,6 +34,12 @@ const claimSchema = mongoose.Schema({
         enum: ["Medical", "Accident", "Theft", "Natural Disaster", "Other"],
         required: [true, "Enter the reason for the claim"]
     },
+    attachmentUrl: {
+        type: String,
+    },
+    attachmentName: {
+        type: String,
+    },
     updatedDate: {
         type: Date,
         default: ()=>Date.now()

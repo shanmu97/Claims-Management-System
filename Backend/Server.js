@@ -26,11 +26,14 @@ const morganStream = {
 };
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms', { stream: morganStream }));
 
+const path = require('path')
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(cors({origin:'*'}));
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(errorHandler)
+
 
 mongoose.connect("mongodb+srv://iambharath1417_db_user:Wot9pBVna4skZUnj@cluster0.ci36vra.mongodb.net/Claims-Management-System?appName=Cluster0",{
     useNewUrlParser: true,
@@ -46,6 +49,7 @@ app.use('/users',require("./Routes/goUsers"))
 app.use('/policies',require("./Routes/goPolicy"))
 app.use('/claims',require("./Routes/goClaims"))
 app.use('/policyholder',require("./Routes/goPolicyholder"))
+app.use('/payments',require("./Routes/goPayments"))
 app.listen(port,()=>{
     logger.info(`Server runs on port ${port}`)
 })
